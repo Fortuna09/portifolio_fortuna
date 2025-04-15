@@ -1,0 +1,19 @@
+.sobre-mim-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .sobre-mim-section h2,
+  .sobre-mim-section p {
+    opacity: 0;
+    transform: translateX(-50px); /* vem da esquerda */
+    transition: all 0.8s ease;
+  }
+  
+  .sobre-mim-section.visible h2,
+  .sobre-mim-section.visible p {
+    opacity: 1;
+    transform: translateX(0); /* posição original */
+  }
+  
