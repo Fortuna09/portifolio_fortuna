@@ -68,6 +68,50 @@
     background-color:rgb(179, 66, 66);  /* cor da bolinha ativa */
   }
 
+
+  /* Responsividade */
+@media (max-width: 768px) {
+  .swiper {
+    max-width: 90%;
+  }
+
+  .projeto-card {
+    padding: 1rem;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    scale: 0.8;
+  }
+
+  .projetos-section h2 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .swiper {
+    max-width: 100%;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none;
+  }
+
+  .projeto-card img {
+    max-height: 200px;
+  }
+
+  .projetos-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .swiper-pagination {
+    bottom: 5px !important;
+  }
+}
+
   
 
 
