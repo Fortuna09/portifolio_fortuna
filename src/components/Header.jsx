@@ -1,5 +1,5 @@
 import React from "react";
-//import "./Header.css"; // Opcional: cria se quiser separar o CSS
+import "../styles/TopBar.css"; 
 
 function Header() {
   return (
