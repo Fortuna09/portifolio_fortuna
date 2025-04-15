@@ -10,5 +10,6 @@ html {
     padding: 0;
     display: flex;
     flex-direction: column;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   }
   

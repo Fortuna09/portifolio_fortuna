@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/TopBar.css"; 
+import "../styles/TopBar.css";
 
 function Header() {
   return (
@@ -12,8 +12,8 @@ function Header() {
       <div className="navigation">
         <ul className="nav_selector">
           <li>
-            <a href="#projetos">
-              <button>Projetos</button>
+            <a href="#sobre-mim">
+              <button>Sobre Mim</button>
             </a>
           </li>
           <li>
@@ -22,8 +22,8 @@ function Header() {
             </a>
           </li>
           <li>
-            <a href="#sobre-mim">
-              <button>Sobre Mim</button>
+            <a href="#projetos">
+              <button>Projetos</button>
             </a>
           </li>
         </ul>
