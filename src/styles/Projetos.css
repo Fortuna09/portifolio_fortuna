@@ -1,0 +1,74 @@
+.projetos-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 2rem;
+    box-sizing: border-box;
+    overflow: hidden; 
+    position: relative;
+  }
+
+.projetos-section h2 {
+    font-size: 3rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .swiper {
+    width: 100%;
+    max-width: 700px; 
+    padding: 1rem 0;
+    overflow: visible !important;
+}
+  
+  .projeto-card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .projeto-card img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+  }
+
+  .swiper-button-next,
+.swiper-button-prev {
+  color: #333; /* ou qualquer cor que quiser */
+  transform: translateX(60px); /* empurra pra fora */
+}
+
+.swiper-button-prev {
+  transform: translateX(-60px); /* empurra pro lado oposto */
+}
+
+.swiper-pagination {
+    margin-top: 1rem; /* aumenta a distância do conteúdo */
+    position: relative; /* evita que fiquem grudadas demais */
+    bottom: -20px; /* ou mais, se quiser mais espaço */
+  }
+
+/* Bolinhas inativas */
+.swiper-pagination-bullet {
+    background-color: #ccc; /* cor das bolinhas inativas */
+    opacity: 1; /* opcional: deixa mais visível */
+  }
+  
+  /* Bolinha ativa (aquela que indica o slide atual) */
+  .swiper-pagination-bullet-active {
+    background-color:rgb(179, 66, 66);  /* cor da bolinha ativa */
+  }
+
+  
+
+
+  
