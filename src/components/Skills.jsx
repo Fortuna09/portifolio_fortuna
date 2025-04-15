@@ -1,15 +1,46 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import "../styles/Skills.css";
 
 function Skills() {
+  const ref = useRef();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.3 }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      if (ref.current) observer.unobserve(ref.current);
+    };
+  }, []);
+
   return (
-    <section id="skills" className="section">
-      <h2>Skills</h2>
-      <ul>
-        <li>HTML, CSS, JavaScript</li>
-        <li>React</li>
-        <li>Git e GitHub</li>
-        <li>Figma, UI/UX</li>
-      </ul>
+    <section
+      id="skills"
+      ref={ref}
+      className={`section skills-section ${isVisible ? "visible" : ""}`}
+    >
+      <div className="skills-container">
+        <div className="skills-image">
+          <img src="../src/assets/js.webp" alt="js" />
+        </div>
+        <div className="skills-text">
+          <h2>Skills</h2>
+          <ul>
+            <li>HTML, CSS, JavaScript</li>
+            <li>React</li>
+            <li>Git e GitHub</li>
+            <li>Figma, UI/UX</li>
+            <li>Feliz</li>
+          </ul>
+        </div>
+      </div>
     </section>
   );
 }
