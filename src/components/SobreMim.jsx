@@ -25,11 +25,20 @@ function SobreMim() {
       ref={ref}
       className={`section sobre-mim-section ${isVisible ? "visible" : ""}`}
     >
-      <h2>Sobre Mim</h2>
-      <p>
-        Sou Rafael Fortuna, desenvolvedor frontend apaixonado por criar
-        interfaces intuitivas e criativas.
-      </p>
+      {" "}
+      <div className="sobre-mim-container">
+        <div className="sobre-mim-texto">
+        <h2>Sobre Mim</h2>
+        <p>
+          Sou Rafael Fortuna, desenvolvedor frontend apaixonado por criar
+          interfaces intuitivas e criativas.
+        </p>
+        </div>
+        <div className="sobre-mim-imagem">
+          <img src="../src/assets/SobreMim.jpg" alt="code" />
+        </div>
+        
+      </div>
     </section>
   );
 }
