@@ -36,7 +36,7 @@ function SobreMim() {
         </p>
         </div>
         <div className="sobre-mim-imagem">
-          <img src="../src/assets/SobreMim.jpg" alt="code" />
+          <img src="./SobreMim.jpg" alt="code" />
         </div>
         
       </div>

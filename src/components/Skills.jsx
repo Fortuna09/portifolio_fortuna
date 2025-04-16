@@ -28,7 +28,7 @@ function Skills() {
     >
       <div className="skills-container">
         <div className="skills-image">
-          <img src="../src/assets/js.webp" alt="js" />
+          <img src="./js.webp" alt="js" />
         </div>
         <div className="skills-text">
           <h2>Skills</h2>

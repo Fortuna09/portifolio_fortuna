@@ -11,13 +11,13 @@ function Projetos() {
     {
       titulo: "Projeto 1",
       descricao: "Projeto React com API",
-      imagem: "../src/assets/projetos/Projeto1.png",
+      imagem: "./Projeto1.png",
       link: "https://github.com/Fortuna09/Alpha",
     },
     {
       titulo: "Projeto 2",
       descricao: "HTML, CSS e JS, com API",
-      imagem: "../src/assets/projetos/Projeto2.png",
+      imagem: "./Projeto2.png",
       link: "https://github.com/Fortuna09/spotfy_screen",
     },
     // adicione mais projetos aqui
