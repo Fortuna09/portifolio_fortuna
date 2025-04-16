@@ -33,11 +33,11 @@ function Skills() {
         <div className="skills-text">
           <h2>Skills</h2>
           <ul>
-            <li>HTML, CSS, JavaScript</li>
-            <li>React</li>
+            <li>HTML, CSS, JavaScript, TypeScript</li>
+            <li>React, Vue</li>
+            <li>SQL e NoSQL</li>
             <li>Git e GitHub</li>
             <li>Figma, UI/UX</li>
-            <li>Feliz</li>
           </ul>
         </div>
       </div>

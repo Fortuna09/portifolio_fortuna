@@ -31,8 +31,9 @@ function SobreMim() {
         <div className="sobre-mim-texto">
         <h2>Sobre Mim</h2>
         <p>
-          Sou Rafael Fortuna, desenvolvedor frontend apaixonado por criar
-          interfaces intuitivas e criativas.
+          Sou Rafael Fortuna, apaixonado por tecnologia e fascinado pelo poder da programação para transformar ideias em soluções reais. 
+          Tenho interesse especial por desenvolvimento web e mobile, com foco em criar interfaces intuitivas, responsivas e que proporcionem 
+          uma boa experiência ao usuário.
         </p>
         </div>
         <div className="sobre-mim-imagem">
