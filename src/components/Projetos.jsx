@@ -10,21 +10,15 @@ function Projetos() {
   const projetos = [
     {
       titulo: "Projeto 1",
-      descricao: "Este é um projeto em React que...",
-      imagem: "/images/projeto1.png", // coloca o path do print
-      link: "https://github.com/rafael/projeto1",
+      descricao: "Projeto React com API",
+      imagem: "../src/assets/projetos/Projeto1.png",
+      link: "https://github.com/Fortuna09/Alpha",
     },
     {
       titulo: "Projeto 2",
-      descricao: "Este projeto usa API externa para...",
-      imagem: "/images/projeto2.png",
-      link: "https://github.com/rafael/projeto2",
-    },
-    {
-      titulo: "Projeto 2",
-      descricao: "Este projeto usa API externa para...",
-      imagem: "../src/assets/SobreMim.jpg",
-      link: "https://github.com/rafael/projeto2",
+      descricao: "HTML, CSS e JS, com API",
+      imagem: "../src/assets/projetos/Projeto2.png",
+      link: "https://github.com/Fortuna09/spotfy_screen",
     },
     // adicione mais projetos aqui
   ];
