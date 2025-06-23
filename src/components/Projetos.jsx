@@ -9,18 +9,30 @@ import "../styles/Projetos.css";
 function Projetos() {
   const projetos = [
     {
-      titulo: "Projeto 1",
+      titulo: "Envio de Feedbacks",
       descricao: "Projeto React com API",
       imagem: "./Projeto1.png",
       link: "https://github.com/Fortuna09/Alpha",
     },
     {
-      titulo: "Projeto 2",
+      titulo: "Spotify",
       descricao: "HTML, CSS e JS, com API",
       imagem: "./Projeto2.png",
       link: "https://github.com/Fortuna09/spotfy_screen",
     },
-    // adicione mais projetos aqui
+    {
+      titulo: "Gerador de paleta de cores",
+      descricao: "Vue.js",
+      imagem: "./Projeto3.png",
+      link: "https://github.com/Fortuna09/color-palette-gen",
+    },
+    {
+      titulo: "Task Flow - Gerenciador de tarefas simples",
+      descricao: "Vue.js",
+      imagem: "./Projeto4.png",
+      link: "https://github.com/Fortuna09/Task-Flow",
+    },
+    //mais projetos aqui
   ];
 
   return (
