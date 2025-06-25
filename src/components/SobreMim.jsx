@@ -31,8 +31,8 @@ function SobreMim() {
         <div className="sobre-mim-texto">
         <h2>Sobre Mim</h2>
         <p>
-          Sou Rafael Fortuna, apaixonado por tecnologia e fascinado pelo poder da programação para transformar ideias em soluções reais. 
-          Tenho interesse especial por desenvolvimento web e mobile, com foco em criar interfaces intuitivas, responsivas e que proporcionem 
+          Sou Rafael Fortuna, estudante de Ciência da Computação na Universidade Federal de Alfenas (UNIFAL).
+          Tenho interesse especial por desenvolvimento web e mobile, com foco em criar interfaces intuitivas, responsivas e que proporcionem
           uma boa experiência ao usuário.
         </p>
         </div>

@@ -49,11 +49,13 @@ function Projetos() {
           <SwiperSlide key={index}>
             <div className="projeto-card">
               <img src={proj.imagem} alt={proj.titulo} />
-              <h3>{proj.titulo}</h3>
-              <p>{proj.descricao}</p>
-              <a href={proj.link} target="_blank" rel="noreferrer">
-                Ver Projeto
-              </a>
+              <div className="projeto-info">
+                <h3>{proj.titulo}</h3>
+                <p>{proj.descricao}</p>
+                <a href={proj.link} target="_blank" rel="noreferrer">
+                  Ver Projeto
+                </a>
+              </div>
             </div>
           </SwiperSlide>
         ))}

@@ -64,7 +64,15 @@
   }
 }
 
-
+.profile-info {
+  color: #fff;
+  text-align: center;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
 
 .profile-info h1{
   font-size: 60px;
@@ -75,7 +83,7 @@
   font-size: x-large;
   color: #fff;
   margin-top: 2rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
   line-height: 1.5;
 }
 
@@ -87,3 +95,36 @@
     font-size: large;
   }
 }
+
+.profile-info a {
+  color:  rgb(116, 41, 41);
+  background-color: #e5e5e5;
+  padding: 20px;
+  font-size: x-large;
+  margin-top: 5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  animation: pulse 3s infinite;
+}
+
+.profile-info a:hover {
+  color: #fff;
+  background-color: rgb(116, 41, 41);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1); /* Tamanho inicial (normal) */
+  }
+  50% {
+    transform: scale(1.05); /* Tamanho no meio da animação (um pouco maior) */
+  }
+  100% {
+    transform: scale(1); /* Volta ao tamanho normal para criar o loop */
+  }
+}
+
+
