@@ -15,12 +15,6 @@ function Projetos() {
       link: "https://github.com/Fortuna09/Alpha",
     },
     {
-      titulo: "Spotify",
-      descricao: "HTML, CSS e JS, com API",
-      imagem: "./Projeto2.png",
-      link: "https://github.com/Fortuna09/spotfy_screen",
-    },
-    {
       titulo: "Gerador de paleta de cores",
       descricao: "Vue.js",
       imagem: "./Projeto3.png",

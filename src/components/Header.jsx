@@ -5,7 +5,6 @@ function Header() {
   return (
     <div className="top-bar">
       <div className="top-bar-content">
-        <img src="/R_logo.png" className="logo-girando" alt="logo" />
         <h1>Rafael Fortuna</h1>
       </div>
 
