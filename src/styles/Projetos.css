@@ -3,10 +3,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    padding: 2rem;
+    min-height: 100vh;
+    padding: 6rem 2rem; 
     box-sizing: border-box;
-    overflow: hidden; 
     position: relative;
   }
 
@@ -24,11 +23,12 @@
 }
   
   .projeto-card {
-    background-color: white;
-    padding: 3rem;
-    border-radius: 16px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    text-align: center;
+    background-color: #f8f9fa; 
+    color: #212529; 
+    padding: 2rem; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: left; 
     width: 100%;
     box-sizing: border-box;
   }
@@ -41,12 +41,39 @@
     margin-bottom: 1rem;
   }
 
+  .tecnologias-container {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 8px;
+    margin: 1rem 0;
+}
+
+.tech-tag {
+    background-color: rgb(179, 66, 66);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 16px; /* Pills/pílulas */
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
   .projeto-info {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
   }
+
+  /* AJUSTE: Remova os <h4> e use <p> com <strong> */
+.projeto-info h3 {
+    text-align: center; /* Centraliza só o título */
+    margin-bottom: 1rem;
+}
+
+.projeto-info p {
+    line-height: 1.6; /* Melhora a legibilidade */
+    margin-bottom: 1rem;
+}
 
   .projeto-info a {
     color: #ffffff;
