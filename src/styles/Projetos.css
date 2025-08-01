@@ -1,125 +1,193 @@
 .projetos-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 6rem 2rem; 
-    box-sizing: border-box;
-    position: relative;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 6rem 2rem;
+  box-sizing: border-box;
+  position: relative;
+}
 
 .projetos-section h2 {
-    font-size: 3rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  .swiper {
-    width: 100%;
-    max-width: 700px; 
-    padding: 1rem 0;
-    overflow: visible !important;
+  font-size: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
-  
-  .projeto-card {
-    background-color: #f8f9fa; 
-    color: #212529; 
-    padding: 2rem; 
-    border-radius: 8px; 
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    text-align: left; 
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  .projeto-card img {
-    width: 100%;
-    max-height: 300px;
-    object-fit: cover;
-    border-radius: 12px;
-    margin-bottom: 1rem;
-  }
 
-  .tecnologias-container {
-    display: flex;
-    flex-wrap: wrap; 
-    gap: 8px;
-    margin: 1rem 0;
+.swiper {
+  width: 100%;
+  max-width: 700px;
+  padding: 1rem 0;
+  overflow: visible !important;
+}
+
+.projeto-card {
+  background-color: #f8f9fa;
+  color: #212529;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.projeto-card img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+.tecnologias-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 1rem 0;
 }
 
 .tech-tag {
-    background-color: rgb(179, 66, 66);
-    color: white;
-    padding: 4px 10px;
-    border-radius: 16px; /* Pills/pílulas */
-    font-size: 0.8rem;
-    font-weight: 500;
+  background-color: rgb(179, 66, 66);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 16px;
+  /* Pills/pílulas */
+  font-size: 0.8rem;
+  font-weight: 500;
 }
 
-  .projeto-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-  }
+.projeto-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
 
-  /* AJUSTE: Remova os <h4> e use <p> com <strong> */
+.projeto-botoes {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  /* Espaço entre os botões */
+  margin-top: 1.5rem;
+  /* Espaço acima dos botões */
+  width: 100%;
+}
+
+.botao-demo,
+.botao-repo {
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.botao-demo svg, .botao-repo svg {
+  width: 20px;
+  height: 20px;
+}
+
+.botao-demo {
+  background-color: rgb(179, 66, 66);
+  color: white;
+  box-shadow: 0 2px 5px rgba(116, 41, 41, 0.4);
+}
+
+.botao-demo:hover {
+  background-color: rgb(116, 41, 41);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.botao-repo {
+  background-color: transparent;
+  color: rgb(179, 66, 66);
+  border: 2px solid rgb(179, 66, 66);
+  box-shadow: 0 2px 5px rgba(116, 41, 41, 0.4);
+}
+
+.botao-repo:hover {
+  background-color: rgba(179, 66, 66, 0.1);
+  transform: translateY(-2px);
+}
+
+.botao-demo:active, .botao-repo:active {
+  transform: translateY(1px); /* Move o botão levemente para baixo */
+  box-shadow: none; /* Remove a sombra para dar a impressão de 'afundar' */
+}
+
 .projeto-info h3 {
-    text-align: center; /* Centraliza só o título */
-    margin-bottom: 1rem;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
 .projeto-info p {
-    line-height: 1.6; /* Melhora a legibilidade */
-    margin-bottom: 1rem;
+  line-height: 1.6;
+  /* Melhora a legibilidade */
+  margin-bottom: 1rem;
 }
 
-  .projeto-info a {
-    color: #ffffff;
-    padding: 5px;
-    border-radius: 8px;
-    background-color: rgb(179, 66, 66);
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
+.projeto-info a {
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 8px;
+  background-color: rgb(179, 66, 66);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
 
 .projeto-info a:hover {
-    color: #fff;
-    background-color: rgb(116, 41, 41);
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
-  }
+  color: #fff;
+  background-color: rgb(116, 41, 41);
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
 
-  .swiper-button-next,
+.swiper-button-next,
 .swiper-button-prev {
-  color: #333; /* ou qualquer cor que quiser */
-  transform: translateX(60px); /* empurra pra fora */
+  color: #333;
+  /* ou qualquer cor que quiser */
+  transform: translateX(60px);
+  /* empurra pra fora */
 }
 
 .swiper-button-prev {
-  transform: translateX(-60px); /* empurra pro lado oposto */
+  transform: translateX(-60px);
+  /* empurra pro lado oposto */
 }
 
 .swiper-pagination {
-    margin-top: 3px; /* aumenta a distância do conteúdo */
-    position: relative; /* evita que fiquem grudadas demais */
-    bottom: -20px; /* ou mais, se quiser mais espaço */
-  }
+  margin-top: 3px;
+  /* aumenta a distância do conteúdo */
+  position: relative;
+  /* evita que fiquem grudadas demais */
+  bottom: -20px;
+  /* ou mais, se quiser mais espaço */
+}
 
 /* Bolinhas inativas */
 .swiper-pagination-bullet {
-    background-color: #ccc; /* cor das bolinhas inativas */
-    opacity: 1; /* opcional: deixa mais visível */
-  }
-  
-  /* Bolinha ativa (aquela que indica o slide atual) */
-  .swiper-pagination-bullet-active {
-    background-color:rgb(179, 66, 66);  /* cor da bolinha ativa */
-  }
+  background-color: #ccc;
+  /* cor das bolinhas inativas */
+  opacity: 1;
+  /* opcional: deixa mais visível */
+}
+
+/* Bolinha ativa (aquela que indica o slide atual) */
+.swiper-pagination-bullet-active {
+  background-color: rgb(179, 66, 66);
+  /* cor da bolinha ativa */
+}
 
 
-  /* Responsividade */
+/* Responsividade */
 @media (max-width: 768px) {
   .swiper {
     max-width: 90%;
@@ -161,8 +229,3 @@
     bottom: 5px !important;
   }
 }
-
-  
-
-
-  
