@@ -1,6 +1,29 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../styles/Skills.css";
 
+const skillsData = [
+  {
+    category: "Front-End",
+    skills: ["HTML5", "CSS3", "Sass", "JavaScript (ES6+)", "TypeScript", "React", "Vue.js", "Redux", "Vuex"]
+  },
+  {
+    category: "Back-End",
+    skills: ["Node.js", "Express.js", "RESTful APIs"]
+  },
+  {
+    category: "Bancos de Dados",
+    skills: ["MongoDB", "Mongoose", "SQL (Básico)"]
+  },
+  {
+    category: "Ferramentas e DevOps",
+    skills: ["Git", "GitHub", "npm", "Vite", "Netlify"]
+  },
+  {
+    category: "Design e UI/UX",
+    skills: ["Figma", "Design Responsivo", "Prototipagem"]
+  }
+];
+
 function Skills() {
   const ref = useRef();
   const [isVisible, setIsVisible] = useState(false);
@@ -8,14 +31,17 @@ function Skills() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting);
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(ref.current); 
+        }
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     );
 
     if (ref.current) observer.observe(ref.current);
+    
     return () => {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
       if (ref.current) observer.unobserve(ref.current);
     };
   }, []);
@@ -26,19 +52,26 @@ function Skills() {
       ref={ref}
       className={`section skills-section ${isVisible ? "visible" : ""}`}
     >
-      <div className="skills-container">
-        <div className="skills-image">
-          <img src="./js.webp" alt="js" />
-        </div>
-        <div className="skills-text">
-          <h2>Skills</h2>
-          <ul>
-            <li>HTML, CSS, JavaScript, TypeScript</li>
-            <li>React, Vue</li>
-            <li>SQL e NoSQL</li>
-            <li>Git e GitHub</li>
-            <li>Figma, UI/UX</li>
-          </ul>
+      <div className="skills-content">
+        <h2>Minha Caixa de Ferramentas</h2>
+        <p className="skills-subtitle">
+          As tecnologias e ferramentas que utilizo para transformar ideias em produtos digitais.
+        </p>
+        <div className="skills-categories">
+          {skillsData.map((category, index) => (
+            <div 
+              className="skill-category" 
+              key={category.category}
+              style={{ transitionDelay: `${index * 150}ms` }}
+            >
+              <h3>{category.category}</h3>
+              <div className="skills-cloud">
+                {category.skills.map((skill) => (
+                  <span className="skill-tag" key={skill}>{skill}</span>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

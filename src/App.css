@@ -1,15 +1,57 @@
-/* App.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+  --background-dark: #1F2023;
+  --text-primary: #E5E5E5;
+  --text-secondary: #a0a0a0;
+  --card-background: #2A2C30;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --font-primary: 'Poppins', sans-serif;
+
+  --gradient-start: #8E2DE2;
+  --gradient-end: #4A00E0;
+  --accent-gradient: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 html {
-    scroll-behavior: smooth;
-  }
-  
-  #root {
-    color: rgb(0, 0, 0);
-    border: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  }
-  
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--background-dark);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+}
+
+p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: var(--accent-gradient);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--accent-hover);
+}
