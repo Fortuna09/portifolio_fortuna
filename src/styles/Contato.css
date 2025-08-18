@@ -1,0 +1,72 @@
+.contato-section {
+  background-color: var(--card-background);
+  text-align: center;
+  padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.contato-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.icon-container {
+  margin-bottom: 2rem;
+}
+
+.paper-plane-icon {
+  width: 60px;
+  height: 60px;
+  color: var(--gradient-end);
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.contato-container h2 {
+  font-size: 3rem;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.contato-container p {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 3rem;
+}
+
+.contato-botoes {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.botao-contato {
+  background: var(--accent-gradient);
+  color: white;
+  padding: 15px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  font-size: 1.1rem;
+}
+
+.botao-contato:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px var(--shadow-color);
+}

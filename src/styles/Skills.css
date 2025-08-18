@@ -1,158 +1,85 @@
 .skills-section {
+  background-color: var(--background-dark);
+  padding: 6rem 2rem;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  padding: 50px 0;
-  background-color: #353535;
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-}
-
-.skills-section.visible {
-  opacity: 1;
-  transform: translateY(0); /* posição original */
-}
-
-.skills-section.hidden {
-  opacity: 0;
-  transform: translateY(50px); /* vem de baixo */
-}
-
-.skills-container {
-  display: flex;
-  flex-direction: row;
   align-items: center;
-  gap: 50px;
 }
 
-.skills-container .skills-image img {
-  width: 400px;
-  height: 400px;
+.skills-content {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
 }
 
-.skills-container .skills-image img:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s ease;
+.skills-content h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
 }
 
-@media (max-width: 768px) {
-  .skills-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .skills-container .skills-image img {
-    width: 200px;
-    height: 200px;
-  }
+.skills-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin-bottom: 4rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-@media (max-width: 400px) {
-  .skills-container .skills-image img {
-    width: 150px;
-    height: 150px;
-  }
-}
-
-@media (max-width: 300px) {
-  .skills-container .skills-image img {
-    width: 100px;
-    height: 100px;
-  }
-}
-
-
-
-.skills-text h2,
-.skills-text ul {
-  opacity: 0;
-  transform: translateX(50px); /* vem da direita */
-  transition: all 0.8s ease;
-}
-
-.skills-section.visible .skills-text h2,
-.skills-section.visible .skills-text ul {
-  opacity: 1;
-  transform: translateX(0); /* posição original */
-}
-
-.skills-text {
+.skills-categories {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  
+  gap: 2.5rem;
 }
 
-.skills-text ul {
-  list-style-type: none;
-  padding: 0;
+.skill-category {
+  background-color: var(--card-background);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.skills-section.visible .skill-category {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill-category h3 {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.skills-cloud {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  gap: 0.75rem;
+  justify-content: flex-start;
 }
 
-.skills-text h2 {
-    color: #fff;
-    font-size: 3rem;
-  margin-bottom: 2rem;
+.skill-tag {
+  background-color: #33353a; 
+  color: var(--text-secondary);
+  padding: 8px 16px;
+  border-radius: 20px; 
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
 }
 
-.skills-text {
-  list-style-type: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: column;
-  justify-content: center;
-}
-
-.skills-text ul {
-  list-style-type: none;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.skills-text li {
-  background-color: #f3f3f3;
-  border-radius: 5px;
-  padding: 10px 20px;
-  margin: 5px;
-  font-size: 1.5rem;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.skills-text li:hover {
-  background-color: rgb(179, 66, 66);
+.skill-tag:hover {
+  color: #fff;
   transform: scale(1.05);
-}
-
-@media (max-width: 768px) {
-  .skills-text h2 {
-    font-size: 2rem;
-  }
-
-  .skills-text li {
-    font-size: 1.2rem;
-  }
-}
-
-@media (max-width: 400px) {
-  .skills-text h2 {
-    font-size: 1.8rem;
-  }
-
-  .skills-text li {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 300px) {
-  .skills-text h2 {
-    font-size: 1.8rem;
-  }
-
-  .skills-text li {
-    font-size: 0.8rem;
-  }
+  background-image: var(--accent-gradient);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-color: var(--gradient-start);
+  box-shadow: 0 0 15px rgba(142, 45, 226, 0.3);
 }

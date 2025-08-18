@@ -1,48 +1,95 @@
-body {
-  overflow-x: hidden;
-}
-
 .projetos-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+  justify-content: flex-start;
   padding: 6rem 2rem;
-  box-sizing: border-box;
-  position: relative;
+  min-height: 100vh;
+  background-color: var(--background-dark);
 }
 
 .projetos-section h2 {
   font-size: 3rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
-.swiper {
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.filter-btn {
+  font-family: var(--font-primary);
+  background-color: var(--card-background);
+  color: var(--text-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  background-color: var(--accent-hover);
+  color: var(--text-primary);
+}
+
+.filter-btn.active {
+  background: var(--accent-gradient);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 0 15px var(--gradient-start);
+}
+
+
+.projetos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
   width: 100%;
-  max-width: 700px;
-  padding: 1rem 0;
-  overflow: visible !important;
+  max-width: 1200px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .projeto-card {
-  background-color: #f8f9fa;
-  color: #212529;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  text-align: left;
-  width: 100%;
-  box-sizing: border-box;
+  background-color: var(--card-background);
+  color: var(--text-primary);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px var(--shadow-color);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.5s ease;
+}
+
+.projeto-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 16px 32px var(--shadow-color);
 }
 
 .projeto-card img {
   width: 100%;
-  max-height: 300px;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
 }
 
 .tecnologias-container {
@@ -53,11 +100,10 @@ body {
 }
 
 .tech-tag {
-  background-color: rgb(179, 66, 66);
-  color: white;
-  padding: 4px 10px;
+  background-color: var(--accent-hover);
+  color: var(--text-primary);
+  padding: 5px 12px;
   border-radius: 16px;
-  /* Pills/pílulas */
   font-size: 0.8rem;
   font-weight: 500;
 }
@@ -65,171 +111,74 @@ body {
 .projeto-info {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 8px;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.projeto-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.projeto-info p {
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
 }
 
 .projeto-botoes {
   display: flex;
   justify-content: center;
-  gap: 16px;
-  /* Espaço entre os botões */
-  margin-top: 1.5rem;
-  /* Espaço acima dos botões */
+  gap: 1rem;
+  margin-top: auto;
   width: 100%;
 }
 
 .botao-demo,
 .botao-repo {
-  padding: 12px 24px;
+  padding: 10px 20px;
   border-radius: 8px;
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
   border: 2px solid transparent;
-  text-align: center;
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  font-size: 0.9rem;
 }
 
 .botao-demo svg, .botao-repo svg {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
 }
 
 .botao-demo {
-  background-color: rgb(179, 66, 66);
+  background: var(--accent-gradient);
   color: white;
-  box-shadow: 0 2px 5px rgba(116, 41, 41, 0.4);
+  border-color: transparent;
 }
 
 .botao-demo:hover {
-  background-color: rgb(116, 41, 41);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px var(--shadow-color);
 }
 
 .botao-repo {
   background-color: transparent;
-  color: rgb(179, 66, 66);
-  border: 2px solid rgb(179, 66, 66);
-  box-shadow: 0 2px 5px rgba(116, 41, 41, 0.4);
+  color: var(--text-primary);
+  border: 2px solid var(--gradient-end);
 }
 
 .botao-repo:hover {
-  background-color: rgba(179, 66, 66, 0.1);
-  transform: translateY(-2px);
-}
-
-.botao-demo:active, .botao-repo:active {
-  transform: translateY(1px); /* Move o botão levemente para baixo */
-  box-shadow: none; /* Remove a sombra para dar a impressão de 'afundar' */
-}
-
-.projeto-info h3 {
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-.projeto-info p {
-  line-height: 1.6;
-  /* Melhora a legibilidade */
-  margin-bottom: 1rem;
-}
-
-.projeto-info a {
-  color: #ffffff;
-  padding: 5px;
-  border-radius: 8px;
-  background-color: rgb(179, 66, 66);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.projeto-info a:hover {
-  color: #fff;
-  background-color: rgb(116, 41, 41);
+  background: var(--accent-gradient);
+  color: white;
+  border-color: transparent;
   transform: scale(1.05);
-  transition: transform 0.3s ease;
 }
 
-.swiper-button-next,
-.swiper-button-prev {
-  color: #333;
-  /* ou qualquer cor que quiser */
-  transform: translateX(60px);
-  /* empurra pra fora */
-}
-
-.swiper-button-prev {
-  transform: translateX(-60px);
-  /* empurra pro lado oposto */
-}
-
-.swiper-pagination {
-  margin-top: 3px;
-  /* aumenta a distância do conteúdo */
-  position: relative;
-  /* evita que fiquem grudadas demais */
-  bottom: -20px;
-  /* ou mais, se quiser mais espaço */
-}
-
-/* Bolinhas inativas */
-.swiper-pagination-bullet {
-  background-color: #ccc;
-  /* cor das bolinhas inativas */
-  opacity: 1;
-  /* opcional: deixa mais visível */
-}
-
-/* Bolinha ativa (aquela que indica o slide atual) */
-.swiper-pagination-bullet-active {
-  background-color: rgb(179, 66, 66);
-  /* cor da bolinha ativa */
-}
-
-
-/* Responsividade */
-@media (max-width: 768px) {
-  .swiper {
-    max-width: 90%;
-  }
-
-  .projeto-card {
-    padding: 1rem;
-  }
-
-  .swiper-button-prev,
-  .swiper-button-next {
-    scale: 0.8;
-  }
-
-  .projetos-section h2 {
-    font-size: 2.2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .swiper {
-    max-width: 100%;
-  }
-
-  .swiper-button-prev,
-  .swiper-button-next {
-    display: none;
-  }
-
-  .projeto-card img {
-    max-height: 200px;
-  }
-
-  .projetos-section h2 {
-    font-size: 1.8rem;
-  }
-
-  .swiper-pagination {
-    bottom: 5px !important;
+@media (max-width: 400px) {
+  .projetos-grid {
+    grid-template-columns: 1fr;
   }
 }
