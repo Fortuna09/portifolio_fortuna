@@ -3,11 +3,23 @@ import "../styles/Projetos.css";
 
 const projetosData = [
   {
+    titulo: "PoloData - Dashboard de Análise de Dados",
+    objetivo: "Desenvolver uma interface de dashboard responsiva e interativa para a visualização e análise de dados de vendas, faturamento e clientes, oferecendo insights de forma clara e intuitiva.",
+    desafio: "O desafio foi integrar uma biblioteca de gráficos de forma performática, construir uma arquitetura de componentes modulares e garantir a responsividade completa das visualizações de dados em telas menores.",
+    tecnologia: "React.js, Chart.js (ou Recharts), Material-UI (ou Tailwind CSS), CSS Grid, Flexbox, Design Responsivo",
+    imagem: "/projeto2-foto.png",
+    gif: "/projeto2-gif.gif",
+    linkRepo: "https://github.com/Fortuna09/Polo",
+    linkDemo: "https://polodata.netlify.app/",
+    tags: ["React.js", "Dashboard", "Data-Viz", "Front-end"]
+  },
+  {
     titulo: "Alpha - Cadastro Full-Stack",
     objetivo: "Desenvolver uma aplicação full-stack para cadastro de usuários, composta por um formulário de alta performance no front-end e uma API RESTful para persistência segura dos dados.",
     desafio: "Construir uma arquitetura cliente-servidor robusta com validação de dados em duas camadas (front-end e back-end) e documentação completa da API com Swagger.",
     tecnologia: "React.js, React Hook Form, Zod, Axios, Node.js, Express.js, Mongoose, MongoDB, Swagger",
-    imagem: "./Projeto1.png",
+    imagem: "/Projeto1.png",
+    gif: null,
     linkRepo: "https://github.com/Fortuna09/Alpha",
     linkDemo: "https://alpha-feedback.netlify.app/",
     tags: ["React.js", "Node.js", "Full-Stack"]
@@ -17,7 +29,8 @@ const projetosData = [
     objetivo: "Criar uma ferramenta front-end para gerar paletas de cores harmoniosas, baseada em algoritmos de teoria das cores.",
     desafio: "Traduzir a lógica matemática da teoria das cores em algoritmos com JavaScript para manipular valores HSL/RGB e gerar paletas de forma dinâmica e interativa.",
     tecnologia: "Vue.js 3, Vuex, Sass, JavaScript (ES6+)",
-    imagem: "./Projeto3.png",
+    imagem: "/Projeto3.png",
+    gif: null,
     linkRepo: "https://github.com/Fortuna09/color-palette-gen",
     linkDemo: "",
     tags: ["Vue.js"]
@@ -27,7 +40,8 @@ const projetosData = [
     objetivo: "Desenvolver uma Single Page Application (SPA) para gerenciamento de tarefas, permitindo ao usuário criar, organizar e priorizar atividades de forma intuitiva.",
     desafio: "Implementar o gerenciamento de estado reativo com Vuex para garantir a sincronização de dados e persistir as tarefas com a localStorage API.",
     tecnologia: "Vue.js 3, Vuex, Vue Router, Sass, localStorage API",
-    imagem: "./Projeto4.png",
+    imagem: "/Projeto4.png",
+    gif: null,
     linkRepo: "https://github.com/Fortuna09/Task-Flow",
     linkDemo: "",
     tags: ["Vue.js"]
@@ -41,6 +55,8 @@ function Projetos() {
   const [filtroAtivo, setFiltroAtivo] = useState('Todos');
 
   const [projetosFiltrados, setProjetosFiltrados] = useState(projetosData);
+
+  const [hoveredIndex, setHoveredIndex] = useState(null);
 
   useEffect(() => {
     if (filtroAtivo === 'Todos') {
@@ -71,8 +87,16 @@ function Projetos() {
 
       <div className="projetos-grid">
         {projetosFiltrados.map((proj, index) => (
-          <div className="projeto-card" key={index}>
-            <img src={proj.imagem} alt={proj.titulo} />
+          <div
+            className="projeto-card"
+            key={index}
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
+            <img
+              src={hoveredIndex === index && proj.gif ? proj.gif : proj.imagem}
+              alt={proj.titulo}
+            />
             <div className="projeto-info">
               <h3>{proj.titulo}</h3>
               <div className="tecnologias-container">

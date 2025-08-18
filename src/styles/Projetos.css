@@ -97,16 +97,29 @@
   flex-wrap: wrap;
   gap: 8px;
   margin: 1rem 0;
+  justify-content: center; 
 }
 
 .tech-tag {
-  background-color: var(--accent-hover);
-  color: var(--text-primary);
+  background-color: #33353a;
+  color: var(--text-secondary);
   padding: 5px 12px;
   border-radius: 16px;
   font-size: 0.8rem;
   font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
 }
+
+.tech-tag:hover {
+  transform: scale(1.05);
+  background-image: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-color: var(--gradient-start);
+}
+
 
 .projeto-info {
   display: flex;
