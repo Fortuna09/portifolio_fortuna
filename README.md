@@ -17,7 +17,7 @@
 
 <br>
 
-![Pré-visualização do Portfólio](https://github.com/SEU-USUARIO-GITHUB/SEU-REPOSITORIO/blob/main/PREVIEW.gif?raw=true)
+![Pré-visualização do Portfólio](https://github.com/Fortuna09/portifolio_fortuna/blob/main/PREVIEW.gif?raw=true)
 
 > Este é o repositório do meu portfólio pessoal, uma Single Page Application (SPA) desenvolvida para apresentar meus projetos, habilidades e trajetória profissional de forma moderna e interativa.
 
