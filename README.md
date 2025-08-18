@@ -63,7 +63,7 @@ O projeto foi construído utilizando as seguintes tecnologias:
 
 ## 📄 Licença
 
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](https://github.com/Fortuna09/portifolio_fortuna/blob/main/LICENSE) para mais detalhes.
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](https://github.com/Fortuna09/portifolio_fortuna/blob/master/LICENSE) para mais detalhes.
 
 <br>
 
