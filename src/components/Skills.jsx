@@ -15,10 +15,6 @@ const skillsData = [
     skills: ["MongoDB", "Mongoose", "SQL (Básico)"]
   },
   {
-    category: "Ferramentas e DevOps",
-    skills: ["Git", "GitHub", "npm", "Vite", "Netlify"]
-  },
-  {
     category: "Design e UI/UX",
     skills: ["Figma", "Design Responsivo", "Prototipagem"]
   }
