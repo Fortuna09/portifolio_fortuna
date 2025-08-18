@@ -1,5 +1,10 @@
 # Portifólio Rafael Fortuna
 
+![Badge do GitHub](https://img.shields.io/github/last-commit/Fortuna09/portifolio_fortuna)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f1d204f2-0e58-46bf-b8a5-c83d72d875f3/deploy-status)](https://app.netlify.com/projects/fortuna-portifolio/deploys)
+
+<br>
+
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
