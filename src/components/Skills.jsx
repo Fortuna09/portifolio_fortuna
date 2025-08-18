@@ -12,7 +12,7 @@ const skillsData = [
   },
   {
     category: "Bancos de Dados",
-    skills: ["MongoDB", "Mongoose", "SQL (Básico)"]
+    skills: [ "SQL", "NoSQL", "MongoDB", "Mongoose", "PostgreSQL", "Firebase", "MySQL"]
   },
   {
     category: "Design e UI/UX",
