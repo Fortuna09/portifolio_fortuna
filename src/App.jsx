@@ -35,9 +35,9 @@ function App() {
       <Header />
       <main>
         <MainContent />
+        <SobreMim />
         <Projetos />  
         <Skills />
-        <SobreMim />
         <Contato />       
       </main>
       <Footer />

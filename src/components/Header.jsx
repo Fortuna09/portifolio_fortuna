@@ -11,6 +11,11 @@ function Header() {
       <div className="navigation">
         <ul className="nav_selector">
           <li>
+            <a href="#sobre-mim"> 
+              <button>Sobre Mim</button>
+            </a>
+          </li>
+          <li>
             <a href="#projetos"> 
               <button>Projetos</button>
             </a>
@@ -18,11 +23,6 @@ function Header() {
           <li>
             <a href="#skills">
               <button>Skills</button>
-            </a>
-          </li>
-          <li>
-            <a href="#sobre-mim"> 
-              <button>Sobre Mim</button>
             </a>
           </li>
           <li>

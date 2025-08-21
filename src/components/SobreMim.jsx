@@ -31,9 +31,9 @@ function SobreMim() {
         <div className="sobre-mim-texto">
         <h2>Sobre Mim</h2>
         <p>
-          Sou Rafael Fortuna, estudante de Ciência da Computação na Universidade Federal de Alfenas (UNIFAL).
-          Tenho interesse especial por desenvolvimento web e mobile, com foco em criar interfaces intuitivas, responsivas e que proporcionem
-          uma boa experiência ao usuário.
+         Olá, sou Rafael Fortuna. Desenvolvedor de Software e estudante de Ciência da Computação na Universidade Federal de Alfenas (UNIFAL).
+         Sou especializado em construir interfaces web e mobile. Utilizando tecnologias como React, JavaScript e TypeScript, transformo conceitos em experiências digitais funcionais e otimizadas.
+         Neste portfólio, você encontrará uma amostra do meu trabalho, com projetos que refletem meu compromisso com código limpo, design intuitivo e a busca constante por soluções eficientes para o usuário.
         </p>
         </div>
         <div className="sobre-mim-imagem">
