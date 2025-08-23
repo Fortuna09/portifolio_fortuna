@@ -14,15 +14,15 @@ const projetosData = [
     tags: ["React.js", "Dashboard", "Data-Viz", "Front-end"]
   },
   {
-    titulo: "Alpha - Cadastro Full-Stack",
-    objetivo: "Desenvolver uma aplicação full-stack para cadastro de usuários, composta por um formulário de alta performance no front-end e uma API RESTful para persistência segura dos dados.",
+    titulo: "Alpha Desk - Envio de feedback e análise de dados",
+    objetivo: "Desenvolver uma aplicação full-stack para cadastro de usuários, composta por um formulário de alta performance, e gráficos para analisar as métricas no front-end e uma API RESTful para persistência segura dos dados.",
     desafio: "Construir uma arquitetura cliente-servidor robusta com validação de dados em duas camadas (front-end e back-end) e documentação completa da API com Swagger.",
-    tecnologia: "React.js, React Hook Form, Zod, Axios, Node.js, Express.js, Mongoose, MongoDB, Swagger",
-    imagem: "/Projeto1.png",
-    gif: null,
-    linkRepo: "https://github.com/Fortuna09/Alpha",
+    tecnologia: "Angular.js, Node.js, ng2-charts, chart.js, Mongoose, MongoDB, Swagger",
+    imagem: "/projeto1-foto.png",
+    gif: "/projeto1-gif.gif",
+    linkRepo: "https://github.com/Fortuna09/alpha-feedback-angular",
     linkDemo: "https://alpha-feedback.netlify.app/",
-    tags: ["React.js", "Node.js", "Full-Stack"]
+    tags: ["React.js", "Dashboard", "Node.js", "Full-Stack"]
   },
   {
     titulo: "Gerador de paleta de cores",
