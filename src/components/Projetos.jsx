@@ -3,37 +3,48 @@ import "../styles/Projetos.css";
 
 const projetosData = [
   {
+    titulo: "F1 Sponsors CRM - A Mini Seller Console",
+    objetivo: "construir um um painel de controle leve para gerenciar e qualificar contatos de vendas (Leads), convertendo-os em negociações ativas (Opportunities).",
+    desafio: "O principal desafio foi arquitetar o gerenciamento de estado de forma centralizada e performática, garantir um fluxo de dados claro entre os componentes usando callbacks, e sincronizar o estado local do formulário de edição com os dados globais da aplicação.",
+    tecnologia: "React + Vite, TypeScript, Tailwind CSS, Design Responsivo",
+    imagem: "/projeto5-foto.png",
+    gif: "/projeto5-gif.gif",
+    linkRepo: "https://github.com/Fortuna09/mini-seller-console",
+    linkDemo: "https://mini-seller-console.netlify.app/",
+    tags: ["React", "TypeScript", "Dashboard", "Front-end"]
+  },
+  {
     titulo: "PoloData - Dashboard de Análise de Dados",
     objetivo: "Desenvolver uma interface de dashboard responsiva e interativa para a visualização e análise de dados de vendas, faturamento e clientes, oferecendo insights de forma clara e intuitiva.",
     desafio: "O desafio foi integrar uma biblioteca de gráficos de forma performática, construir uma arquitetura de componentes modulares e garantir a responsividade completa das visualizações de dados em telas menores.",
-    tecnologia: "React.js, Chart.js (ou Recharts), Material-UI (ou Tailwind CSS), CSS Grid, Flexbox, Design Responsivo",
+    tecnologia: "React.js, Chart.js, Tailwind CSS, CSS Grid, Flexbox, Design Responsivo",
     imagem: "/projeto2-foto.png",
     gif: "/projeto2-gif.gif",
     linkRepo: "https://github.com/Fortuna09/Polo",
     linkDemo: "https://polodata.netlify.app/",
-    tags: ["React.js", "Dashboard", "Data-Viz", "Front-end"]
+    tags: ["React", "TypeScript", "Dashboard", "Front-end"]
   },
   {
     titulo: "Alpha Desk - Envio de feedback e análise de dados",
     objetivo: "Desenvolver uma aplicação full-stack para cadastro de usuários, composta por um formulário de alta performance, e gráficos para analisar as métricas no front-end e uma API RESTful para persistência segura dos dados.",
     desafio: "Construir uma arquitetura cliente-servidor robusta com validação de dados em duas camadas (front-end e back-end) e documentação completa da API com Swagger.",
-    tecnologia: "Angular.js, Node.js, ng2-charts, chart.js, Mongoose, MongoDB, Swagger",
+    tecnologia: "Angular.js, Node.js, Chart.js, Mongoose, MongoDB, Swagger",
     imagem: "/projeto1-foto.png",
     gif: "/projeto1-gif.gif",
     linkRepo: "https://github.com/Fortuna09/alpha-feedback-angular",
     linkDemo: "https://alpha-feedback.netlify.app/",
-    tags: ["React.js", "Dashboard", "Node.js", "Full-Stack"]
+    tags: ["Angular", "TypeScript", "Node.js", "Dashboard", "Full-Stack"]
   },
   {
     titulo: "Gerador de paleta de cores",
     objetivo: "Criar uma ferramenta front-end para gerar paletas de cores harmoniosas, baseada em algoritmos de teoria das cores.",
     desafio: "Traduzir a lógica matemática da teoria das cores em algoritmos com JavaScript para manipular valores HSL/RGB e gerar paletas de forma dinâmica e interativa.",
-    tecnologia: "Vue.js 3, Vuex, Sass, JavaScript (ES6+)",
+    tecnologia: "Vue.js 3, Vuex, Sass, JavaScript",
     imagem: "/Projeto3.png",
     gif: null,
     linkRepo: "https://github.com/Fortuna09/color-palette-gen",
     linkDemo: "",
-    tags: ["Vue.js"]
+    tags: ["Vue", "Front-end"]
   },
   {
     titulo: "Task Flow",
@@ -44,7 +55,7 @@ const projetosData = [
     gif: null,
     linkRepo: "https://github.com/Fortuna09/Task-Flow",
     linkDemo: "",
-    tags: ["Vue.js"]
+    tags: ["Vue", "Front-end"]
   },
 ];
 
