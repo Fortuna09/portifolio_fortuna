@@ -13,7 +13,7 @@ function MainContent() {
         </div>
         <div className="profile-info">
           <h1>Rafael Fortuna</h1>
-          <p>Desenvolvedor Web</p>
+          <p>Desenvolvedor Front End</p>
           <a href="./Rafael_Fortuna.pdf" download="Rafael_Fortuna.pdf">
             Baixar meu Currículo
           </a>
