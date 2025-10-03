@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/Contato.css';
 
 function Contato() {
-  const email = "fortunarafael9@gmail.com";
+  const email = "fortunadev9@gmail.com";
   const subject = encodeURIComponent("Contato pelo Portfólio");
   const body = encodeURIComponent("Olá Rafael,\n\nEstou entrando em contato após ver seu portfólio e gostaria de conversar sobre...");
   const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
