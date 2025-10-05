@@ -18,7 +18,6 @@ function MainContent() {
             Baixar meu Currículo
           </a>
         </div>
-
       </div>
     </div>
   );
