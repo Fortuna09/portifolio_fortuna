@@ -3,6 +3,16 @@ import "../styles/Projetos.css";
 
 const projetosData = [
   {
+    titulo: "Lazy Load - Projeto de Otimização de Imagens",
+    objetivo: "Implementar a técnica de Lazy Loading para otimizar o carregamento de imagens em uma aplicação web.",
+    desafio: "O principal desafio foi garantir que as imagens fossem carregadas de forma assíncrona, melhorando a performance da aplicação sem comprometer a experiência do usuário.",
+    tecnologia: "React, JavaScript, CSS",
+    imagem: "/projeto6-foto.png",
+    gif: "/projeto6-gif.gif",
+    linkRepo: "https://github.com/Fortuna09/lazy-load-project",
+    tags: ["React", "JavaScript", "Front-end"]
+  },
+  {
     titulo: "F1 Sponsors CRM - A Mini Seller Console",
     objetivo: "construir um um painel de controle leve para gerenciar e qualificar contatos de vendas (Leads), convertendo-os em negociações ativas (Opportunities).",
     desafio: "O principal desafio foi arquitetar o gerenciamento de estado de forma centralizada e performática, garantir um fluxo de dados claro entre os componentes usando callbacks, e sincronizar o estado local do formulário de edição com os dados globais da aplicação.",
