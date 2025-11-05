@@ -4,7 +4,7 @@ import "../styles/Skills.css";
 const skillsData = [
   {
     category: "Front-End",
-    skills: ["HTML5", "CSS3", "Sass", "JavaScript (ES6+)", "TypeScript", "React", "Vue.js", "Redux", "Vuex"]
+    skills: ["HTML", "CSS", "JavaScript", "React", "TypeScript", "Angular"]
   },
   {
     category: "Back-End",
@@ -51,7 +51,7 @@ function Skills() {
       <div className="skills-content">
         <h2>Minha Caixa de Ferramentas</h2>
         <p className="skills-subtitle">
-          As tecnologias e ferramentas que utilizo para transformar ideias em produtos digitais.
+          As tecnologias e ferramentas que utilizo:
         </p>
         <div className="skills-categories">
           {skillsData.map((category, index) => (
