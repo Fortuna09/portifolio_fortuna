@@ -2,38 +2,19 @@ import React, { useState, useEffect } from "react";
 import "../styles/Projetos.css";
 
 const projetosData = [
+  //Projeto Kanban (Angular)
   {
-    titulo: "Lazy Load - Projeto de Otimização de Imagens",
-    objetivo: "Implementar a técnica de Lazy Loading para otimizar o carregamento de imagens em uma aplicação web.",
-    desafio: "O principal desafio foi garantir que as imagens fossem carregadas de forma assíncrona, melhorando a performance da aplicação sem comprometer a experiência do usuário.",
-    tecnologia: "React, JavaScript, CSS",
-    imagem: "/projeto6-foto.png",
-    gif: "/projeto6-gif.gif",
-    linkRepo: "https://github.com/Fortuna09/lazy-load-project",
-    tags: ["React", "JavaScript", "Front-end"]
+    "titulo": "SyncFlow - Plataforma SaaS de Gestão de Projetos (MVP)",
+    "objetivo": "Desenvolver uma arquitetura Fullstack Serverless escalável para gestão de tarefas (estilo Kanban), focando em performance reativa e isolamento de dados (Multi-tenancy). Obs: Projeto em produção contínua, recebendo novas features incrementalmente via pipeline de CI/CD.",
+    "desafio": "Implementar um sistema de segurança robusto utilizando Row Level Security (RLS) no PostgreSQL para garantir privacidade total entre usuários, além de modernizar o gerenciamento de estado no Front-end substituindo Zone.js por Angular Signals.",
+    "tecnologia": "Angular 17+, TypeScript, Supabase (Auth/DB), TailwindCSS, Vercel, GitHub Actions",
+    "imagem": "/Projeto7-foto.png",
+    //"gif": "/syncflow-demo.gif",
+    "linkRepo": "https://github.com/SEU_USUARIO/sync-flow",
+    "linkDemo": "https://sync-flow-seunome.vercel.app/",
+    "tags": ["Angular", "SaaS", "Supabase", "Architecture", "DevOps"]
   },
-  {
-    titulo: "F1 Sponsors CRM - A Mini Seller Console",
-    objetivo: "construir um um painel de controle leve para gerenciar e qualificar contatos de vendas (Leads), convertendo-os em negociações ativas (Opportunities).",
-    desafio: "O principal desafio foi arquitetar o gerenciamento de estado de forma centralizada e performática, garantir um fluxo de dados claro entre os componentes usando callbacks, e sincronizar o estado local do formulário de edição com os dados globais da aplicação.",
-    tecnologia: "React + Vite, TypeScript, Tailwind CSS, Design Responsivo",
-    imagem: "/projeto5-foto.png",
-    gif: "/projeto5-gif.gif",
-    linkRepo: "https://github.com/Fortuna09/mini-seller-console",
-    linkDemo: "https://mini-seller-console.netlify.app/",
-    tags: ["React", "TypeScript", "Dashboard", "Front-end"]
-  },
-  {
-    titulo: "PoloData - Dashboard de Análise de Dados",
-    objetivo: "Desenvolver uma interface de dashboard responsiva e interativa para a visualização e análise de dados de vendas, faturamento e clientes, oferecendo insights de forma clara e intuitiva.",
-    desafio: "O desafio foi integrar uma biblioteca de gráficos de forma performática, construir uma arquitetura de componentes modulares e garantir a responsividade completa das visualizações de dados em telas menores.",
-    tecnologia: "React.js, Chart.js, Tailwind CSS, CSS Grid, Flexbox, Design Responsivo",
-    imagem: "/projeto2-foto.png",
-    gif: "/projeto2-gif.gif",
-    linkRepo: "https://github.com/Fortuna09/Polo",
-    linkDemo: "https://polodata.netlify.app/",
-    tags: ["React", "TypeScript", "Dashboard", "Front-end"]
-  },
+  //Projeto Full Stack (Angular)
   {
     titulo: "Alpha Desk - Envio de feedback e análise de dados",
     objetivo: "Desenvolver uma aplicação full-stack para cadastro de usuários, composta por um formulário de alta performance, e gráficos para analisar as métricas no front-end e uma API RESTful para persistência segura dos dados.",
@@ -45,6 +26,42 @@ const projetosData = [
     linkDemo: "https://alpha-feedback.netlify.app/",
     tags: ["Angular", "TypeScript", "Node.js", "Dashboard", "Full-Stack"]
   },
+  //Projeto de LazyLoad (React)
+  {
+    titulo: "Lazy Load - Projeto de Otimização de Imagens",
+    objetivo: "Implementar a técnica de Lazy Loading para otimizar o carregamento de imagens em uma aplicação web.",
+    desafio: "O principal desafio foi garantir que as imagens fossem carregadas de forma assíncrona, melhorando a performance da aplicação sem comprometer a experiência do usuário.",
+    tecnologia: "React, JavaScript, CSS",
+    imagem: "/projeto6-foto.png",
+    gif: "/projeto6-gif.gif",
+    linkRepo: "https://github.com/Fortuna09/lazy-load-project",
+    tags: ["React", "JavaScript", "Front-end"]
+  },
+  //Projeto de Seller Console (React)
+  {
+    titulo: "F1 Sponsors CRM - A Mini Seller Console",
+    objetivo: "construir um um painel de controle leve para gerenciar e qualificar contatos de vendas (Leads), convertendo-os em negociações ativas (Opportunities).",
+    desafio: "O principal desafio foi arquitetar o gerenciamento de estado de forma centralizada e performática, garantir um fluxo de dados claro entre os componentes usando callbacks, e sincronizar o estado local do formulário de edição com os dados globais da aplicação.",
+    tecnologia: "React + Vite, TypeScript, Tailwind CSS, Design Responsivo",
+    imagem: "/projeto5-foto.png",
+    gif: "/projeto5-gif.gif",
+    linkRepo: "https://github.com/Fortuna09/mini-seller-console",
+    linkDemo: "https://mini-seller-console.netlify.app/",
+    tags: ["React", "TypeScript", "Dashboard", "Front-end"]
+  },
+  //Projeto de Dashboard (REACT)
+  {
+    titulo: "PoloData - Dashboard de Análise de Dados",
+    objetivo: "Desenvolver uma interface de dashboard responsiva e interativa para a visualização e análise de dados de vendas, faturamento e clientes, oferecendo insights de forma clara e intuitiva.",
+    desafio: "O desafio foi integrar uma biblioteca de gráficos de forma performática, construir uma arquitetura de componentes modulares e garantir a responsividade completa das visualizações de dados em telas menores.",
+    tecnologia: "React.js, Chart.js, Tailwind CSS, CSS Grid, Flexbox, Design Responsivo",
+    imagem: "/projeto2-foto.png",
+    gif: "/projeto2-gif.gif",
+    linkRepo: "https://github.com/Fortuna09/Polo",
+    linkDemo: "https://polodata.netlify.app/",
+    tags: ["React", "TypeScript", "Dashboard", "Front-end"]
+  },
+  //Projeto teste (VUE)
   {
     titulo: "Gerador de paleta de cores",
     objetivo: "Criar uma ferramenta front-end para gerar paletas de cores harmoniosas, baseada em algoritmos de teoria das cores.",
@@ -56,6 +73,7 @@ const projetosData = [
     linkDemo: "",
     tags: ["Vue", "Front-end"]
   },
+  //Projeto teste (VUE)
   {
     titulo: "Task Flow",
     objetivo: "Desenvolver uma Single Page Application (SPA) para gerenciamento de tarefas, permitindo ao usuário criar, organizar e priorizar atividades de forma intuitiva.",
