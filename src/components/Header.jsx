@@ -1,38 +1,61 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/TopBar.css";
 
 function Header() {
-  return (
-    <div className="top-bar">
-      <div className="top-bar-content">
-        <h1>Rafael Fortuna</h1>
-      </div>
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
 
-      <div className="navigation">
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+      
+      // Detect active section
+      const sections = ['sobre-mim', 'projetos', 'skills', 'contato'];
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 150 && rect.bottom >= 150) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navItems = [
+    { id: 'sobre-mim', label: 'Sobre Mim' },
+    { id: 'projetos', label: 'Projetos' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'contato', label: 'Contato' },
+  ];
+
+  return (
+    <header className={`top-bar ${scrolled ? 'scrolled' : ''}`}>
+      <a href="#" className="logo">
+        <span className="logo-text">RF</span>
+        <span className="logo-dot"></span>
+      </a>
+
+      <nav className="navigation">
         <ul className="nav_selector">
-          <li>
-            <a href="#sobre-mim"> 
-              <button>Sobre Mim</button>
-            </a>
-          </li>
-          <li>
-            <a href="#projetos"> 
-              <button>Projetos</button>
-            </a>
-          </li>
-          <li>
-            <a href="#skills">
-              <button>Skills</button>
-            </a>
-          </li>
-          <li>
-            <a href="#contato">
-              <button>Contato</button>
-            </a>
-          </li>
+          {navItems.map((item) => (
+            <li key={item.id}>
+              <a 
+                href={`#${item.id}`}
+                className={activeSection === item.id ? 'active' : ''}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
         </ul>
-      </div>
-    </div>
+      </nav>
+    </header>
   );
 }
 

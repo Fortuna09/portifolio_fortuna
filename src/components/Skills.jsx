@@ -4,19 +4,28 @@ import "../styles/Skills.css";
 const skillsData = [
   {
     category: "Front-End",
-    skills: ["HTML", "CSS", "JavaScript", "React", "TypeScript", "Angular"]
+    icon: "🎨",
+    skills: ["React.js", "Angular 16+", "TypeScript", "JavaScript ES6+", "HTML5 & SEO", "CSS3", "Sass/SCSS", "Tailwind CSS", "RxJS", "Signals"]
   },
   {
-    category: "Back-End",
-    skills: ["Node.js", "Express.js", "RESTful APIs"]
+    category: "Back-End & Integração",
+    icon: "⚙️",
+    skills: ["Node.js", "Python", "APIs REST", "Firebase", "Supabase", "Webhooks", "Testes Unitários"]
   },
   {
     category: "Bancos de Dados",
-    skills: [ "SQL", "NoSQL", "MongoDB", "Mongoose", "PostgreSQL", "Firebase", "MySQL"]
+    icon: "🗄️",
+    skills: ["PostgreSQL", "SQL", "MongoDB", "Firebase Realtime"]
   },
   {
-    category: "Design e UI/UX",
-    skills: ["Figma", "Design Responsivo", "Prototipagem"]
+    category: "DevOps & Ferramentas",
+    icon: "🚀",
+    skills: ["Git", "GitHub", "Docker", "Azure DevOps", "n8n", "Metodologias Ágeis", "CI/CD"]
+  },
+  {
+    category: "UI/UX & Design",
+    icon: "✨",
+    skills: ["Figma", "Responsive Design", "shadcn/ui", "Design Systems", "Acessibilidade"]
   }
 ];
 
@@ -49,21 +58,30 @@ function Skills() {
       className={`section skills-section ${isVisible ? "visible" : ""}`}
     >
       <div className="skills-content">
-        <h2>Minha Caixa de Ferramentas</h2>
+        <h2>Minha <span className="gradient-text">Caixa de Ferramentas</span></h2>
         <p className="skills-subtitle">
-          As tecnologias e ferramentas que utilizo:
+          Tecnologias e ferramentas que utilizo para criar soluções completas
         </p>
-        <div className="skills-categories">
+        <div className="skills-grid">
           {skillsData.map((category, index) => (
             <div 
-              className="skill-category" 
+              className="skill-card" 
               key={category.category}
-              style={{ transitionDelay: `${index * 150}ms` }}
+              style={{ animationDelay: `${index * 100}ms` }}
             >
-              <h3>{category.category}</h3>
-              <div className="skills-cloud">
-                {category.skills.map((skill) => (
-                  <span className="skill-tag" key={skill}>{skill}</span>
+              <div className="skill-card-header">
+                <span className="skill-icon">{category.icon}</span>
+                <h3>{category.category}</h3>
+              </div>
+              <div className="skills-tags">
+                {category.skills.map((skill, skillIndex) => (
+                  <span 
+                    className="skill-tag" 
+                    key={skill}
+                    style={{ animationDelay: `${(index * 100) + (skillIndex * 50)}ms` }}
+                  >
+                    {skill}
+                  </span>
                 ))}
               </div>
             </div>

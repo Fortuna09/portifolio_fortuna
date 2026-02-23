@@ -1,0 +1,10 @@
+{
+  "titulo": "Nome do Projeto",
+  "objetivo": "Descreva aqui o objetivo principal do projeto, o que ele faz e qual problema resolve.",
+  "desafio": "Descreva o principal desafio técnico que você enfrentou e como resolveu.",
+  "tecnologia": "React, TypeScript, Node.js, MongoDB",
+  "imagem": "/projeto-foto.png",
+  "gif": "/projeto-gif.gif",
+  "linkDemo": "https://seu-projeto.netlify.app/",
+  "tags": ["React", "TypeScript", "Full-Stack"]
+}

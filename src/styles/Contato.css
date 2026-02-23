@@ -1,5 +1,7 @@
 .contato-section {
-  background-color: var(--card-background);
+  background: 
+    radial-gradient(ellipse at 50% 100%, rgba(0, 212, 255, 0.08) 0%, transparent 60%),
+    var(--background-secondary);
   text-align: center;
   padding: 6rem 2rem;
   position: relative;
@@ -9,6 +11,8 @@
 .contato-container {
   max-width: 800px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .icon-container {
@@ -16,34 +20,36 @@
 }
 
 .paper-plane-icon {
-  width: 60px;
-  height: 60px;
-  color: var(--gradient-end);
+  width: 70px;
+  height: 70px;
+  color: var(--accent-secondary);
   animation: float 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px var(--glow-secondary));
 }
 
 @keyframes float {
   0% {
-    transform: translateY(0px);
+    transform: translateY(0px) rotate(0deg);
   }
   50% {
-    transform: translateY(-15px);
+    transform: translateY(-15px) rotate(5deg);
   }
   100% {
-    transform: translateY(0px);
+    transform: translateY(0px) rotate(0deg);
   }
 }
 
 .contato-container h2 {
-  font-size: 3rem;
+  font-size: 2.8rem;
   color: var(--text-primary);
   margin-bottom: 1.5rem;
+  line-height: 1.2;
 }
 
 .contato-container p {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   color: var(--text-secondary);
-  line-height: 1.7;
+  line-height: 1.8;
   margin-bottom: 3rem;
 }
 
@@ -57,16 +63,32 @@
 .botao-contato {
   background: var(--accent-gradient);
   color: white;
-  padding: 15px 30px;
-  border-radius: 8px;
+  padding: 16px 32px;
+  border-radius: 12px;
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
   border: 2px solid transparent;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 20px var(--glow-primary);
 }
 
 .botao-contato:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px var(--shadow-color);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 35px var(--glow-primary);
+}
+
+.botao-contato:last-child {
+  background: transparent;
+  border: 2px solid var(--accent-primary);
+  box-shadow: none;
+}
+
+.botao-contato:last-child:hover {
+  background: var(--accent-gradient);
+  border-color: transparent;
+  box-shadow: 0 12px 35px var(--glow-primary);
 }

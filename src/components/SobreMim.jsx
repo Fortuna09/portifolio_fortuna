@@ -28,7 +28,7 @@ function SobreMim() {
       {" "}
       <div className="sobre-mim-container">
         <div className="sobre-mim-texto">
-        <h2>Sobre Mim</h2>
+        <h2>Sobre <span>Mim</span></h2>
         <p>
          Olá, sou Rafael Fortuna. Desenvolvedor de Software e estudante de Ciência da Computação na Universidade Federal de Alfenas (UNIFAL). <br /><br />
          Sou especializado em construir interfaces web e mobile. Utilizando tecnologias como HTML, CSS e JavaScript/TypeScript, transformo conceitos em experiências digitais funcionais e otimizadas.<br /><br />

@@ -27,11 +27,25 @@ function App() {
   }, []);
 
   const spotlightStyle = {
-    background: `radial-gradient(600px at ${mousePosition.x}px ${mousePosition.y}px, rgba(179, 66, 66, 0.15), transparent 80%)`
+    background: `radial-gradient(600px at ${mousePosition.x}px ${mousePosition.y}px, rgba(0, 212, 255, 0.04), transparent 80%)`
   };
 
   return (
     <div className="App" style={spotlightStyle}>
+      {/* Starfield Layers - Parallax Effect */}
+      <div className="stars-layer stars-small"></div>
+      <div className="stars-layer stars-medium"></div>
+      <div className="stars-layer stars-large"></div>
+      
+      {/* Nebula Clouds - Static aesthetic background */}
+      <div className="nebula-layer">
+        <div className="nebula nebula-1"></div>
+        <div className="nebula nebula-2"></div>
+      </div>
+      
+      {/* Subtle Tech Grid Overlay */}
+      <div className="tech-grid"></div>
+      
       <Header />
       <main>
         <MainContent />
