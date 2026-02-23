@@ -17,8 +17,6 @@
 
 <br>
 
-![Pré-visualização do Portfólio](https://github.com/Fortuna09/portifolio_fortuna/blob/master/PREVIEW.gif?raw=true)
-
 > Este é o repositório do meu portfólio pessoal, uma Single Page Application (SPA) desenvolvida para apresentar meus projetos, habilidades e trajetória profissional de forma moderna e interativa.
 
 <br>
@@ -76,6 +74,5 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](https://github.c
 
 **Rafael Fortuna**
 
--   **E-mail:** [fortunarafael9@gmail.com](mailto:fortunarafael9@gmail.com)
+-   **E-mail:** [fortunadev9@gmail.com](mailto:fortunadev9@gmail.com)
 -   **LinkedIn:** [https://www.linkedin.com/in/rafael-fortuna-990184264/](https://www.linkedin.com/in/rafael-fortuna-990184264/)
--   **GitHub:** [https://github.com/Fortuna09](https://github.com/Fortuna09)
