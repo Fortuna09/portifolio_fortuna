@@ -234,8 +234,8 @@
 }
 
 .projeto-descricao {
-  flex-grow: 1;
-  margin-bottom: 1.5rem;
+  flex-grow: 0;
+  margin-bottom: 1rem;
 }
 
 .projeto-descricao p {
@@ -246,6 +246,29 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  margin: 0;
+}
+
+/* Labels para cada informação */
+.info-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.3rem;
+}
+
+/* Seção de tecnologias */
+.projeto-tecnologias {
+  margin-bottom: 1rem;
+}
+
+.projeto-tecnologias p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
   margin: 0;
 }
 

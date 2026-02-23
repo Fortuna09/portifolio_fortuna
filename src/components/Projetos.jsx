@@ -283,12 +283,26 @@ function Projetos() {
                     {proj.tecnologia.slice(0, 5).map((tech) => (
                       <span key={tech} className="tech-tag">{tech}</span>
                     ))}
-                    
                   </div>
 
-                  {/* Descrição */}
+                  {/* Objetivo */}
                   <div className="projeto-descricao">
+                    <span className="info-label">Objetivo:</span>
                     <p>{proj.objetivo}</p>
+                  </div>
+
+                  {/* Desafio */}
+                  {proj.desafio && (
+                    <div className="projeto-descricao">
+                      <span className="info-label">Desafio:</span>
+                      <p>{proj.desafio}</p>
+                    </div>
+                  )}
+
+                  {/* Tecnologias usadas */}
+                  <div className="projeto-tecnologias">
+                    <span className="info-label">Tecnologias:</span>
+                    <p>{Array.isArray(proj.tecnologia) ? proj.tecnologia.join(', ') : proj.tecnologia}</p>
                   </div>
 
                   {/* Botões */}
