@@ -4,6 +4,7 @@ import "../styles/MainContent.css";
 
 const typingTexts = [
   "Engenheiro Front-End",
+  "Desenvolvedor Full-Stack",
   "Estudante de Ciência da Computação",
   "Focado em Arquitetura e Performance",
   "Transformando Lógica em Soluções Reais",
