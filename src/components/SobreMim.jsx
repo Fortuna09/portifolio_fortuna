@@ -30,9 +30,9 @@ function SobreMim() {
         <div className="sobre-mim-texto">
           <h2>Sobre <span>Mim</span></h2>
           <p>
-            Olá, sou Rafael Fortuna. Desenvolvedor de Software focado em aplicações web e mobile, com experiência em projetos reais envolvendo performance, integração com APIs e dados em tempo real.<br /><br />
+            Olá, sou Rafael Fortuna. Estudante de Ciência da Computação na Universidade Federal de Alfenas (UNIFAL) e desenvolvedor de software focado em aplicações web e mobile.<br /><br />
 
-            Já atuei na construção de sistemas com foco em usabilidade e eficiência, resolvendo problemas como renderização de grandes volumes de dados, comunicação em tempo real e consistência de informações entre usuários.<br /><br />
+            Tenho experiência em projetos reais envolvendo performance, integração com APIs e dados em tempo real. Já atuei na construção de sistemas com foco em usabilidade e eficiência, resolvendo problemas como renderização de grandes volumes de dados, comunicação em tempo real e consistência de informações entre usuários.<br /><br />
 
             Busco oportunidades para evoluir tecnicamente e contribuir com soluções que gerem impacto real para o usuário.
           </p>
