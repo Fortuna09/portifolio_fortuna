@@ -28,17 +28,19 @@ function SobreMim() {
       {" "}
       <div className="sobre-mim-container">
         <div className="sobre-mim-texto">
-        <h2>Sobre <span>Mim</span></h2>
-        <p>
-         Olá, sou Rafael Fortuna. Desenvolvedor de Software e estudante de Ciência da Computação na Universidade Federal de Alfenas (UNIFAL). <br /><br />
-         Sou especializado em construir interfaces web e mobile. Utilizando tecnologias como HTML, CSS e JavaScript/TypeScript, transformo conceitos em experiências digitais funcionais e otimizadas.<br /><br />
-         Neste portfólio, você encontrará uma amostra do meu trabalho, com projetos que refletem meu compromisso com código limpo, design intuitivo e a busca constante por soluções eficientes para o usuário.
-        </p>
+          <h2>Sobre <span>Mim</span></h2>
+          <p>
+            Olá, sou Rafael Fortuna. Desenvolvedor de Software focado em aplicações web e mobile, com experiência em projetos reais envolvendo performance, integração com APIs e dados em tempo real.<br /><br />
+
+            Já atuei na construção de sistemas com foco em usabilidade e eficiência, resolvendo problemas como renderização de grandes volumes de dados, comunicação em tempo real e consistência de informações entre usuários.<br /><br />
+
+            Busco oportunidades para evoluir tecnicamente e contribuir com soluções que gerem impacto real para o usuário.
+          </p>
         </div>
         <div className="sobre-mim-imagem">
           <img src="./SobreMim.jpg" alt="code" />
         </div>
-        
+
       </div>
     </section>
   );
