@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { ExternalIcon, GitHubIcon } from "./icons";
 import "../styles/Projetos.css";
 
 // =============================================================================
@@ -15,7 +16,7 @@ const projetosDataFallback = [
     titulo: "Alpha Desk - Envio de feedback e análise de dados",
     objetivo: "Desenvolver uma aplicação full-stack para cadastro de usuários, composta por um formulário de alta performance, e gráficos para analisar as métricas no front-end e uma API RESTful para persistência segura dos dados.",
     desafio: "Construir uma arquitetura cliente-servidor robusta com validação de dados em duas camadas (front-end e back-end) e documentação completa da API com Swagger.",
-    tecnologia: "Angular.js, Node.js, Chart.js, Mongoose, MongoDB, Swagger",
+    tecnologia: ["Angular", "Node.js", "Chart.js", "Mongoose", "MongoDB", "Swagger"],
     imagem: "/projeto1-foto.png",
     gif: "/projeto1-gif.gif",
     linkRepo: "https://github.com/Fortuna09/alpha-feedback-angular",
@@ -212,211 +213,177 @@ function Projetos() {
   }, [filtroAtivo, projetos]);
 
   return (
-    <section id="projetos" className="section projetos-section">
-      <h2>Meus Projetos</h2>
-
-      {/* Loading */}
-      {loading && (
-        <div className="loading-container">
-          <div className="loading-spinner"></div>
-          <p>Buscando projetos do GitHub...</p>
+    <section id="projetos" className="section">
+      <div className="container">
+        <div className="section-head">
+          <span className="section-label">Projetos</span>
+          <h2>Projetos que construí</h2>
+          <p>
+            Carregados direto do meu GitHub, com o que cada um resolve e o principal desafio
+            técnico.
+          </p>
         </div>
-      )}
 
-      {error && (
-        <p className="error-message">
-          Não foi possível conectar ao GitHub. Exibindo projetos salvos.
-        </p>
-      )}
+        {loading && (
+          <div className="projetos-loading" role="status">
+            <span className="loading-spinner" aria-hidden="true" />
+            Carregando projetos do GitHub…
+          </div>
+        )}
 
-      {!loading && (
-        <>
-          {projetoDestaque && (
-            <article
-              className="destaque-card"
-              onMouseEnter={() => setHoverDestaque(true)}
-              onMouseLeave={() => setHoverDestaque(false)}
-            >
-              <div className="destaque-media">
-                <img
-                  src={hoverDestaque && projetoDestaque.gif ? projetoDestaque.gif : projetoDestaque.imagem}
-                  alt={projetoDestaque.titulo}
-                  loading="lazy"
-                />
-              </div>
+        {error && (
+          <p className="projetos-aviso">
+            Não foi possível conectar ao GitHub agora. Exibindo projetos salvos.
+          </p>
+        )}
 
-              <div className="destaque-info">
-                <div className="destaque-selos">
-                  <span className="destaque-rotulo">Projeto em destaque</span>
-                  {projetoDestaque.linkDemo && (
-                    <span className="selo-no-ar"><span className="selo-pulso" />No ar</span>
-                  )}
-                  {projetoDestaque.premio && (
-                    <span className="selo-premio">🏆 {projetoDestaque.premio}</span>
-                  )}
+        {!loading && (
+          <>
+            {projetoDestaque && (
+              <article
+                className="destaque-card"
+                onMouseEnter={() => setHoverDestaque(true)}
+                onMouseLeave={() => setHoverDestaque(false)}
+              >
+                <div className="destaque-media">
+                  <img
+                    src={hoverDestaque && projetoDestaque.gif ? projetoDestaque.gif : projetoDestaque.imagem}
+                    alt={projetoDestaque.titulo}
+                    loading="lazy"
+                  />
                 </div>
 
-                <h3>{projetoDestaque.titulo}</h3>
-                <p className="destaque-objetivo">{projetoDestaque.objetivo}</p>
+                <div className="destaque-info">
+                  <div className="selos">
+                    <span className="selo selo-destaque">Em destaque</span>
+                    {projetoDestaque.linkDemo && (
+                      <span className="selo selo-no-ar"><span className="selo-ponto" />No ar</span>
+                    )}
+                    {projetoDestaque.premio && (
+                      <span className="selo selo-premio">{projetoDestaque.premio}</span>
+                    )}
+                  </div>
 
-                {projetoDestaque.pontosFortes.length > 0 && (
-                  <ul className="destaque-pontos">
-                    {projetoDestaque.pontosFortes.map((ponto) => (
-                      <li key={ponto}>{ponto}</li>
+                  <h3>{projetoDestaque.titulo}</h3>
+                  <p className="destaque-objetivo">{projetoDestaque.objetivo}</p>
+
+                  {projetoDestaque.pontosFortes.length > 0 && (
+                    <ul className="destaque-pontos">
+                      {projetoDestaque.pontosFortes.map((ponto) => (
+                        <li key={ponto}>{ponto}</li>
+                      ))}
+                    </ul>
+                  )}
+
+                  <ul className="tech-list">
+                    {projetoDestaque.tecnologia.map((tech) => (
+                      <li key={tech}>{tech}</li>
                     ))}
                   </ul>
-                )}
 
-                <div className="tecnologias-container destaque-techs">
-                  {projetoDestaque.tecnologia.map((tech) => (
-                    <span key={tech} className="tech-tag">{tech}</span>
-                  ))}
-                </div>
-
-                <div className="projeto-botoes destaque-botoes">
-                  {projetoDestaque.linkDemo && (
-                    <a href={projetoDestaque.linkDemo} target="_blank" rel="noreferrer" className="botao-demo">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                      </svg>
-                      Acessar o app
-                    </a>
-                  )}
-                  <a href={projetoDestaque.linkRepo} target="_blank" rel="noreferrer" className="botao-repo">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                    Código
-                  </a>
-                </div>
-              </div>
-            </article>
-          )}
-
-          {/* Filtros */}
-          <div className="filter-buttons">
-            {todasAsTags.map(tag => (
-              <button
-                key={tag}
-                className={`filter-btn ${filtroAtivo === tag ? 'active' : ''}`}
-                onClick={() => setFiltroAtivo(tag)}
-              >
-                {tag}
-              </button>
-            ))}
-          </div>
-
-          {/* Contador de projetos */}
-          <p className="projetos-count">
-            <span className="count-number">{projetosFiltrados.length}</span> 
-            {projetosFiltrados.length === 1 ? ' projeto encontrado' : ' projetos encontrados'}
-          </p>
-
-          <div className="projetos-grid">
-            {projetosFiltrados.map((proj, index) => (
-              <article
-                className="projeto-card"
-                key={proj.linkRepo || index}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                {/* Imagem com overlay */}
-                <div className="projeto-image-container">
-                  <img
-                    src={hoveredIndex === index && proj.gif ? proj.gif : proj.imagem}
-                    alt={proj.titulo}
-                    loading="lazy"
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = `https://opengraph.githubassets.com/1/${GITHUB_USERNAME}/${proj.titulo.replace(/\s+/g, '-').toLowerCase()}`;
-                    }}
-                  />
-                  {proj.gif && (
-                    <div className="gif-indicator">
-                      <span>▶</span> Coloque o mouse para ver o GIF
-                    </div>
-                  )}
-                  {proj.premio && (
-                    <div className="premio-badge">🏆 {proj.premio}</div>
-                  )}
-                  {proj.stars > 0 && (
-                    <div className="stars-badge">
-                      <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                      </svg>
-                      {proj.stars}
-                    </div>
-                  )}
-                </div>
-
-                <div className="projeto-info">
-                  <h3>{proj.titulo}</h3>
-                  
-                  {/* Tags de tecnologia */}
-                  <div className="tecnologias-container">
-                    {proj.tecnologia.slice(0, 5).map((tech) => (
-                      <span key={tech} className="tech-tag">{tech}</span>
-                    ))}
-                  </div>
-
-                  {/* Objetivo */}
-                  <div className="projeto-descricao">
-                    <span className="info-label">Objetivo:</span>
-                    <p>{proj.objetivo}</p>
-                  </div>
-
-                  {/* Desafio */}
-                  {proj.desafio && (
-                    <div className="projeto-descricao">
-                      <span className="info-label">Desafio:</span>
-                      <p>{proj.desafio}</p>
-                    </div>
-                  )}
-
-                  {/* Tecnologias usadas */}
-                  <div className="projeto-tecnologias">
-                    <span className="info-label">Tecnologias:</span>
-                    <p>{Array.isArray(proj.tecnologia) ? proj.tecnologia.join(', ') : proj.tecnologia}</p>
-                  </div>
-
-                  {/* Botões */}
-                  <div className="projeto-botoes">
-                    {proj.linkDemo && (
-                      <a href={proj.linkDemo} target="_blank" rel="noreferrer" className="botao-demo">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                        </svg>
-                        Demo
+                  <div className="destaque-acoes">
+                    {projetoDestaque.linkDemo && (
+                      <a href={projetoDestaque.linkDemo} target="_blank" rel="noreferrer" className="btn btn-primary">
+                        <ExternalIcon />
+                        Acessar o app
                       </a>
                     )}
-                    <a href={proj.linkRepo} target="_blank" rel="noreferrer" className="botao-repo">
-                      <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                      </svg>
-                      Código
+                    <a href={projetoDestaque.linkRepo} target="_blank" rel="noreferrer" className="btn btn-secondary">
+                      <GitHubIcon />
+                      Ver código
                     </a>
                   </div>
                 </div>
               </article>
-            ))}
-          </div>
+            )}
 
-          {/* Mensagem se não houver projetos */}
-          {projetosFiltrados.length === 0 && (
-            <div className="no-projects">
-              <svg className="no-projects-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
-              </svg>
-              <h3>Nenhum projeto encontrado</h3>
-              <p>Não há projetos com a tag "{filtroAtivo}"</p>
-              <button className="reset-filter-btn" onClick={() => setFiltroAtivo('Todos')}>
-                Ver todos os projetos
-              </button>
+            <div className="projetos-toolbar">
+              <div className="filter-buttons" role="group" aria-label="Filtrar por tecnologia">
+                {todasAsTags.map((tag) => (
+                  <button
+                    key={tag}
+                    type="button"
+                    className={`filter-btn ${filtroAtivo === tag ? 'active' : ''}`}
+                    aria-pressed={filtroAtivo === tag}
+                    onClick={() => setFiltroAtivo(tag)}
+                  >
+                    {tag}
+                  </button>
+                ))}
+              </div>
+              <p className="projetos-count">
+                {projetosFiltrados.length} {projetosFiltrados.length === 1 ? 'projeto' : 'projetos'}
+              </p>
             </div>
-          )}
-        </>
-      )}
+
+            <div className="projetos-grid">
+              {projetosFiltrados.map((proj, index) => (
+                <article
+                  className="projeto-card"
+                  key={proj.linkRepo || index}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                >
+                  <div className="projeto-media">
+                    <img
+                      src={hoveredIndex === index && proj.gif ? proj.gif : proj.imagem}
+                      alt={proj.titulo}
+                      loading="lazy"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = `https://opengraph.githubassets.com/1/${GITHUB_USERNAME}/${proj.titulo.replace(/\s+/g, '-').toLowerCase()}`;
+                      }}
+                    />
+                    {proj.premio && <span className="selo selo-premio projeto-media-selo">{proj.premio}</span>}
+                    {proj.gif && <span className="gif-hint">Passe o mouse para ver em ação</span>}
+                  </div>
+
+                  <div className="projeto-body">
+                    <h3>{proj.titulo}</h3>
+                    <p className="projeto-objetivo">{proj.objetivo}</p>
+
+                    {proj.desafio && (
+                      <div className="projeto-desafio">
+                        <span>Desafio técnico</span>
+                        <p>{proj.desafio}</p>
+                      </div>
+                    )}
+
+                    <ul className="tech-list">
+                      {proj.tecnologia.map((tech) => (
+                        <li key={tech}>{tech}</li>
+                      ))}
+                    </ul>
+
+                    <div className="projeto-links">
+                      {proj.linkDemo && (
+                        <a href={proj.linkDemo} target="_blank" rel="noreferrer" className="text-link">
+                          <ExternalIcon />
+                          Demo
+                        </a>
+                      )}
+                      <a href={proj.linkRepo} target="_blank" rel="noreferrer" className="text-link">
+                        <GitHubIcon />
+                        Código
+                      </a>
+                      {proj.stars > 0 && <span className="projeto-stars">★ {proj.stars}</span>}
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            {projetosFiltrados.length === 0 && (
+              <div className="no-projects">
+                <p>Nenhum projeto com a tecnologia "{filtroAtivo}".</p>
+                <button type="button" className="btn btn-secondary" onClick={() => setFiltroAtivo('Todos')}>
+                  Ver todos os projetos
+                </button>
+              </div>
+            )}
+          </>
+        )}
+      </div>
     </section>
   );
 }

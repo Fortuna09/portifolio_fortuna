@@ -1,523 +1,118 @@
-/* =============================================================================
-   HERO SECTION - Space-Tech Theme
-   ============================================================================= */
+.hero {
+  padding: 88px 0 72px;
+}
 
-.hero-section {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 64px;
   align-items: center;
-  padding: 6rem 2rem 4rem;
-  position: relative;
-  background: transparent;
-  overflow: hidden;
 }
 
-/* =============================================================================
-   SPACE-TECH DECORATIONS
-   ============================================================================= */
-
-.hero-decoration {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
+.hero-eyebrow {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 16px;
 }
 
-/* Tech Icons Orbit */
-.tech-orbit {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+.hero h1 {
+  font-size: clamp(2.6rem, 6vw, 4.25rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
 }
 
-.tech-icon-float {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  opacity: 0.7;
-  animation: floatTech 15s ease-in-out infinite;
-  filter: drop-shadow(0 0 15px currentColor);
-  transition: all 0.3s ease;
+.hero-lead {
+  margin-top: 24px;
+  max-width: 560px;
+  font-size: 1.15rem;
+  line-height: 1.7;
 }
 
-.tech-icon-float svg {
-  width: 100%;
-  height: 100%;
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 36px;
 }
 
-.tech-icon-float:hover {
-  opacity: 1;
-  transform: scale(1.3);
-  filter: drop-shadow(0 0 25px currentColor);
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  margin-top: 32px;
+  list-style: none;
+  font-size: 0.95rem;
 }
 
-.tech-icon-float:nth-child(1) { top: 15%; left: 5%; }
-.tech-icon-float:nth-child(2) { top: 25%; right: 8%; }
-.tech-icon-float:nth-child(3) { top: 70%; left: 8%; }
-.tech-icon-float:nth-child(4) { top: 80%; right: 12%; }
-.tech-icon-float:nth-child(5) { top: 45%; left: 3%; }
-.tech-icon-float:nth-child(6) { top: 55%; right: 5%; }
-
-@keyframes floatTech {
-  0%, 100% { 
-    transform: translateY(0) translateX(0) rotate(0deg) scale(1);
-    opacity: 0.6;
-  }
-  25% { 
-    transform: translateY(-20px) translateX(10px) rotate(5deg) scale(1.1);
-    opacity: 0.8;
-  }
-  50% { 
-    transform: translateY(10px) translateX(-15px) rotate(-5deg) scale(0.9);
-    opacity: 0.5;
-  }
-  75% { 
-    transform: translateY(-10px) translateX(5px) rotate(3deg) scale(1.05);
-    opacity: 0.7;
-  }
+.hero-photo img {
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
 }
 
-/* Hexagonal Grid */
-.hex-grid {
-  position: absolute;
-  top: 10%;
-  left: -5%;
+.hero-facts {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  transform: rotate(-15deg);
-  opacity: 0.1;
+  margin-top: 72px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
 }
 
-.hex {
-  width: 60px;
-  height: 70px;
-  background: var(--accent-gradient);
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  animation: hexPulse 3s ease-in-out infinite;
+.hero-facts > div {
+  padding: 20px 24px;
 }
 
-@keyframes hexPulse {
-  0%, 100% { opacity: 0.1; transform: scale(1); }
-  50% { opacity: 0.3; transform: scale(1.05); }
+.hero-facts > div + div {
+  border-left: 1px solid var(--border);
 }
 
-
-
-
-
-/* =============================================================================
-   HERO CONTENT
-   ============================================================================= */
-
-.hero-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5rem;
-  max-width: 1200px;
-  width: 100%;
-  z-index: 1;
-}
-
-/* =============================================================================
-   PROFILE IMAGE - Holographic Style
-   ============================================================================= */
-
-.hero-image-container {
-  position: relative;
-  flex-shrink: 0;
-}
-
-.hero-image {
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  object-fit: cover;
-  position: relative;
-  z-index: 2;
-  border: 3px solid transparent;
-  background: 
-    linear-gradient(var(--background-dark), var(--background-dark)) padding-box,
-    var(--accent-gradient) border-box;
-  animation: imageFloat 6s ease-in-out infinite;
-}
-
-@keyframes imageFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-.image-glow {
-  position: absolute;
-  inset: -30px;
-  background: conic-gradient(
-    from 0deg,
-    var(--accent-secondary),
-    var(--cosmic-purple),
-    var(--gradient-start),
-    var(--accent-secondary)
-  );
-  border-radius: 50%;
-  opacity: 0.3;
-  filter: blur(50px);
-  animation: glowRotate 8s linear infinite;
-}
-
-@keyframes glowRotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.image-ring {
-  position: absolute;
-  inset: -20px;
-  border: 2px solid var(--accent-secondary);
-  border-radius: 50%;
-  opacity: 0.4;
-  animation: ringPulse 4s ease-in-out infinite, rotateRing 20s linear infinite;
-}
-
-@keyframes ringPulse {
-  0%, 100% { opacity: 0.4; transform: scale(1) rotate(0deg); }
-  50% { opacity: 0.7; transform: scale(1.02) rotate(180deg); }
-}
-
-@keyframes rotateRing {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-
-/* =============================================================================
-   HERO INFO
-   ============================================================================= */
-
-.hero-info {
-  text-align: left;
-}
-
-.hero-greeting {
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-  font-weight: 400;
-  margin-bottom: 0.5rem;
-  letter-spacing: 1px;
-}
-
-.hero-name {
-  font-size: 4.5rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  line-height: 1.1;
-  margin-bottom: 1rem;
-  font-family: var(--font-tech);
-  letter-spacing: -1px;
-}
-
-.gradient-text {
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  position: relative;
-}
-
-.gradient-text::after {
-  content: '';
-  position: absolute;
-  bottom: 5px;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: var(--accent-gradient);
-  border-radius: 2px;
-  opacity: 0.5;
-}
-
-.hero-role {
-  font-size: 1.4rem;
-  color: var(--text-secondary);
-  min-height: 2.5rem;
-  margin-bottom: 1.5rem;
-  font-family: 'Fira Code', monospace;
-}
-
-.role-bracket {
-  color: var(--accent-secondary);
-  font-weight: 600;
-}
-
-.typing-cursor {
-  color: white;
-  animation: blink 1s step-end infinite;
-  font-weight: 300;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-/* =============================================================================
-   CTA BUTTONS
-   ============================================================================= */
-
-.hero-buttons {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.btn-primary,
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 28px;
-  border-radius: 12px;
-  font-size: 1rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-primary svg,
-.btn-secondary svg {
-  width: 20px;
-  height: 20px;
-}
-
-.btn-primary {
-  background: var(--accent-gradient);
-  color: white;
-  border: none;
-  box-shadow: 0 4px 20px var(--glow-primary);
-}
-
-.btn-primary::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: left 0.5s ease;
-}
-
-.btn-primary:hover::before {
-  left: 100%;
-}
-
-.btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 30px var(--glow-primary);
-}
-
-.btn-secondary {
-  background: rgba(10, 10, 20, 0.8);
-  color: var(--text-primary);
-  border: 2px solid var(--accent-primary);
-  backdrop-filter: blur(10px);
-}
-
-.btn-secondary:hover {
-  background: var(--accent-gradient);
-  border-color: transparent;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 30px var(--glow-primary);
-}
-
-/* =============================================================================
-   SOCIAL LINKS
-   ============================================================================= */
-
-.hero-socials {
-  display: flex;
-  gap: 1rem;
-}
-
-.social-link {
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-  background: rgba(10, 10, 20, 0.6);
-  border: 1px solid var(--card-border);
-  color: var(--text-secondary);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.social-link::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--accent-gradient);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.social-link svg {
-  width: 22px;
-  height: 22px;
-  position: relative;
-  z-index: 1;
-}
-
-.social-link:hover {
-  color: white;
-  border-color: var(--accent-secondary);
-  transform: translateY(-5px) scale(1.05);
-  box-shadow: 0 10px 30px var(--glow-secondary);
-}
-
-.social-link:hover::before {
-  opacity: 1;
-}
-
-/* =============================================================================
-   SCROLL INDICATOR
-   ============================================================================= */
-
-.scroll-indicator {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  color: var(--text-secondary);
+.hero-facts dt {
   font-size: 0.8rem;
-  letter-spacing: 2px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  opacity: 0.7;
-  animation: fadeInUp 1s ease 1.5s forwards;
+  color: var(--text-subtle);
 }
 
-.scroll-arrow {
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: bounce 2s ease-in-out infinite;
+.hero-facts dd {
+  margin-top: 6px;
+  font-weight: 600;
+  color: var(--text);
 }
 
-.scroll-arrow svg {
-  width: 24px;
-  height: 24px;
-  color: var(--accent-secondary);
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(10px); }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateX(-50%) translateY(20px);
-  }
-  to {
-    opacity: 0.7;
-    transform: translateX(-50%) translateY(0);
-  }
-}
-
-/* =============================================================================
-   SECTION BASE
-   ============================================================================= */
-
-.section {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-}
-
-/* =============================================================================
-   RESPONSIVE
-   ============================================================================= */
-
-@media (max-width: 1024px) {
-  .tech-icon-float {
-    font-size: 1.5rem;
-  }
-}
-
-@media (max-width: 900px) {
-  .hero-content {
-    flex-direction: column;
-    text-align: center;
-    gap: 3rem;
+@media (max-width: 860px) {
+  .hero {
+    padding: 56px 0 56px;
   }
 
-  .hero-info {
-    text-align: center;
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
 
-  .hero-name {
-    font-size: 3rem;
+  .hero-photo {
+    order: -1;
   }
 
-  .hero-role {
-    font-size: 1.1rem;
+  .hero-photo img {
+    width: 112px;
+    height: 112px;
+    border-radius: 16px;
   }
 
-  .hero-buttons {
-    justify-content: center;
-    flex-wrap: wrap;
+  .hero-facts {
+    grid-template-columns: 1fr;
+    margin-top: 48px;
   }
 
-  .hero-socials {
-    justify-content: center;
-  }
-  
-  .hex-grid {
-    display: none;
-  }
-  
-  .tech-orbit {
-    display: none;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-image {
-    width: 220px;
-    height: 220px;
-  }
-
-  .hero-name {
-    font-size: 2.2rem;
-  }
-
-  .hero-greeting {
-    font-size: 0.95rem;
-  }
-
-  .hero-role {
-    font-size: 0.95rem;
-  }
-
-  .btn-primary,
-  .btn-secondary {
-    padding: 12px 20px;
-    font-size: 0.9rem;
+  .hero-facts > div + div {
+    border-left: 0;
+    border-top: 1px solid var(--border);
   }
 }

@@ -1,107 +1,29 @@
-.sobre-mim-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: 
-    radial-gradient(ellipse at 80% 50%, rgba(10, 102, 194, 0.06) 0%, transparent 50%),
-    var(--background-dark);
-  padding: 6rem 2rem;
+.sobre-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 64px;
 }
 
-.sobre-mim-container {
-  display: flex;
-  align-items: center;
-  gap: 5rem;
-  max-width: 1100px;
+.sobre-grid .section-head {
+  margin-bottom: 0;
 }
 
-.sobre-mim-texto h2,
-.sobre-mim-texto p {
-  opacity: 0;
-  transform: translateX(-50px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+.sobre-texto {
+  max-width: 640px;
 }
 
-.sobre-mim-section.visible .sobre-mim-texto h2,
-.sobre-mim-section.visible .sobre-mim-texto p {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.sobre-mim-texto h2 {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
-  color: var(--text-primary);
-}
-
-.sobre-mim-texto h2 span {
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.sobre-mim-texto p {
-  font-size: 1.1rem;
-  text-align: justify;
-  max-width: 600px;
-  transition-delay: 200ms;
+.sobre-texto p {
+  font-size: 1.08rem;
   line-height: 1.8;
 }
 
-.sobre-mim-imagem {
-  position: relative;
+.sobre-texto p + p {
+  margin-top: 20px;
 }
 
-.sobre-mim-imagem::before {
-  content: '';
-  position: absolute;
-  inset: -20px;
-  background: var(--accent-gradient);
-  border-radius: 50%;
-  opacity: 0.2;
-  filter: blur(40px);
-  z-index: 0;
-}
-
-.sobre-mim-imagem img {
-  width: 350px;
-  height: 350px;
-  border-radius: 50%;
-  object-fit: cover;
-  position: relative;
-  z-index: 1;
-  border: 3px solid transparent;
-  background: 
-    linear-gradient(var(--background-dark), var(--background-dark)) padding-box,
-    var(--accent-gradient) border-box;
-  transition: transform 0.3s ease;
-}
-
-.sobre-mim-imagem img:hover {
-  transform: scale(1.05);
-}
-
-@media (max-width: 900px) {
-  .sobre-mim-container {
-    flex-direction: column-reverse;
-    gap: 3rem;
-  }
-  
-  .sobre-mim-texto {
-    text-align: center;
-  }
-  
-  .sobre-mim-texto p {
-    text-align: center;
-  }
-  
-  .sobre-mim-texto h2 {
-    font-size: 2.2rem;
-  }
-  
-  .sobre-mim-imagem img {
-    width: 280px;
-    height: 280px;
+@media (max-width: 860px) {
+  .sobre-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 }

@@ -1,46 +1,30 @@
-import React, { useEffect, useRef, useState } from "react";
-import "../styles/SobreMim.css"; // Criamos esse CSS a seguir
+import '../styles/SobreMim.css';
 
 function SobreMim() {
-  const ref = useRef();
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      { threshold: 0.3 }
-    );
-
-    if (ref.current) observer.observe(ref.current);
-    return () => {
-      if (ref.current) observer.unobserve(ref.current);
-    };
-  }, []);
-
   return (
-    <section
-      id="sobre-mim"
-      ref={ref}
-      className={`section sobre-mim-section ${isVisible ? "visible" : ""}`}
-    >
-      {" "}
-      <div className="sobre-mim-container">
-        <div className="sobre-mim-texto">
-          <h2>Sobre <span>Mim</span></h2>
+    <section id="sobre-mim" className="section">
+      <div className="container sobre-grid">
+        <div className="section-head">
+          <span className="section-label">Sobre</span>
+          <h2>Sobre mim</h2>
+        </div>
+
+        <div className="sobre-texto">
           <p>
-            Olá, sou Rafael Fortuna. Estudante de Ciência da Computação na Universidade Federal de Alfenas (UNIFAL) e desenvolvedor de software focado em aplicações web e mobile.<br /><br />
-
-            Tenho experiência em projetos reais envolvendo performance, integração com APIs e dados em tempo real. Já atuei na construção de sistemas com foco em usabilidade e eficiência, resolvendo problemas como renderização de grandes volumes de dados, comunicação em tempo real e consistência de informações entre usuários.<br /><br />
-
-            Busco oportunidades para evoluir tecnicamente e contribuir com soluções que gerem impacto real para o usuário.
+            Sou Rafael Fortuna, estudante de Ciência da Computação na Universidade Federal de
+            Alfenas (UNIFAL) e desenvolvedor de software focado em aplicações web e mobile.
+          </p>
+          <p>
+            Tenho experiência em projetos reais envolvendo performance, integração com APIs e
+            dados em tempo real. Já atuei na construção de sistemas com foco em usabilidade e
+            eficiência, resolvendo problemas como renderização de grandes volumes de dados,
+            comunicação em tempo real e consistência de informações entre usuários.
+          </p>
+          <p>
+            Busco oportunidades para evoluir tecnicamente e contribuir com soluções que gerem
+            impacto real para o usuário.
           </p>
         </div>
-        <div className="sobre-mim-imagem">
-          <img src="./SobreMim.jpg" alt="code" />
-        </div>
-
       </div>
     </section>
   );

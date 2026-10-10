@@ -1,94 +1,39 @@
-.contato-section {
-  background: 
-    radial-gradient(ellipse at 50% 100%, rgba(0, 212, 255, 0.08) 0%, transparent 60%),
-    var(--background-secondary);
-  text-align: center;
-  padding: 6rem 2rem;
-  position: relative;
-  overflow: hidden;
+.contato-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: end;
+  padding: 48px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
 }
 
-.contato-container {
-  max-width: 800px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
+.contato-card h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+  font-weight: 700;
 }
 
-.icon-container {
-  margin-bottom: 2rem;
+.contato-card p {
+  margin-top: 12px;
+  max-width: 520px;
+  font-size: 1.05rem;
 }
 
-.paper-plane-icon {
-  width: 70px;
-  height: 70px;
-  color: var(--accent-secondary);
-  animation: float 4s ease-in-out infinite;
-  filter: drop-shadow(0 0 20px var(--glow-secondary));
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-15px) rotate(5deg);
-  }
-  100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-}
-
-.contato-container h2 {
-  font-size: 2.8rem;
-  color: var(--text-primary);
-  margin-bottom: 1.5rem;
-  line-height: 1.2;
-}
-
-.contato-container p {
-  font-size: 1.15rem;
-  color: var(--text-secondary);
-  line-height: 1.8;
-  margin-bottom: 3rem;
-}
-
-.contato-botoes {
+.contato-acoes {
   display: flex;
-  justify-content: center;
-  gap: 1.5rem;
   flex-wrap: wrap;
+  gap: 12px;
 }
 
-.botao-contato {
-  background: var(--accent-gradient);
-  color: white;
-  padding: 16px 32px;
-  border-radius: 12px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
-  font-size: 1rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  box-shadow: 0 4px 20px var(--glow-primary);
-}
+@media (max-width: 860px) {
+  .contato-card {
+    grid-template-columns: 1fr;
+    padding: 28px 24px;
+    gap: 28px;
+  }
 
-.botao-contato:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 35px var(--glow-primary);
-}
-
-.botao-contato:last-child {
-  background: transparent;
-  border: 2px solid var(--accent-primary);
-  box-shadow: none;
-}
-
-.botao-contato:last-child:hover {
-  background: var(--accent-gradient);
-  border-color: transparent;
-  box-shadow: 0 12px 35px var(--glow-primary);
+  .contato-acoes .btn {
+    width: 100%;
+  }
 }
