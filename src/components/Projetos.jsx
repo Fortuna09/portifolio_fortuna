@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { ExternalIcon, GitHubIcon } from "./icons";
 import "../styles/Projetos.css";
 
 // =============================================================================
@@ -151,14 +150,7 @@ function Projetos() {
   const [projetos, setProjetos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [filtroAtivo, setFiltroAtivo] = useState('Todos');
-  const [projetosFiltrados, setProjetosFiltrados] = useState([]);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [hoverDestaque, setHoverDestaque] = useState(false);
-  const [todasAsTags, setTodasAsTags] = useState(['Todos']);
-
-  // O projeto em destaque sai da grade (efeitos abaixo) para não aparecer duas vezes
-  const projetoDestaque = projetos.find(p => p.destaque);
+  const [emFoco, setEmFoco] = useState(null);
 
   // Busca os projetos do GitHub ao montar o componente
   useEffect(() => {
@@ -168,13 +160,10 @@ function Projetos() {
         const repos = await fetchGitHubRepos();
 
         if (repos.length === 0) {
-          // Se não encontrou repos com a tag, usa o fallback
           setProjetos(projetosDataFallback);
           console.warn(`Nenhum repositório encontrado com a tag "${PORTFOLIO_TOPIC}". Usando dados de fallback.`);
         } else {
-          // Converte todos os repos para o formato do portfólio
-          const projectPromises = repos.map(repo => repoToProject(repo));
-          const projects = await Promise.all(projectPromises);
+          const projects = await Promise.all(repos.map(repo => repoToProject(repo)));
           setProjetos(projects);
         }
 
@@ -191,37 +180,15 @@ function Projetos() {
     loadProjects();
   }, []);
 
-  // Atualiza as tags disponíveis quando os projetos mudam
-  useEffect(() => {
-    const grade = projetos.filter(p => !p.destaque);
-    const tags = ['Todos', ...new Set(grade.flatMap(p => p.tags || []))];
-    setTodasAsTags(tags);
-    setProjetosFiltrados(grade);
-  }, [projetos]);
-
-  // Filtra projetos quando o filtro ativo muda
-  useEffect(() => {
-    const grade = projetos.filter(p => !p.destaque);
-    if (filtroAtivo === 'Todos') {
-      setProjetosFiltrados(grade);
-    } else {
-      const filtrados = grade.filter(projeto =>
-        projeto.tags?.includes(filtroAtivo)
-      );
-      setProjetosFiltrados(filtrados);
-    }
-  }, [filtroAtivo, projetos]);
+  // O projeto marcado com "destaque" no portfolio.json vem primeiro
+  const ordenados = [...projetos].sort((a, b) => Number(Boolean(b.destaque)) - Number(Boolean(a.destaque)));
 
   return (
     <section id="projetos" className="section">
       <div className="container">
         <div className="section-head">
-          <span className="section-label">Projetos</span>
-          <h2>Projetos que construí</h2>
-          <p>
-            Carregados direto do meu GitHub, com o que cada um resolve e o principal desafio
-            técnico.
-          </p>
+          <h2>Projetos</h2>
+          <p>Projetos pessoais e de hackathon, carregados direto do meu GitHub.</p>
         </div>
 
         {loading && (
@@ -238,150 +205,70 @@ function Projetos() {
         )}
 
         {!loading && (
-          <>
-            {projetoDestaque && (
-              <article
-                className="destaque-card"
-                onMouseEnter={() => setHoverDestaque(true)}
-                onMouseLeave={() => setHoverDestaque(false)}
-              >
-                <div className="destaque-media">
-                  <img
-                    src={hoverDestaque && projetoDestaque.gif ? projetoDestaque.gif : projetoDestaque.imagem}
-                    alt={projetoDestaque.titulo}
-                    loading="lazy"
-                  />
-                </div>
+          <ol className="proj-lista">
+            {ordenados.map((proj) => {
+              const chave = proj.linkRepo || proj.titulo;
+              const nota = [proj.destaque && proj.linkDemo ? 'Em produção' : null, proj.premio]
+                .filter(Boolean)
+                .join(' · ');
 
-                <div className="destaque-info">
-                  <div className="selos">
-                    <span className="selo selo-destaque">Em destaque</span>
-                    {projetoDestaque.linkDemo && (
-                      <span className="selo selo-no-ar"><span className="selo-ponto" />No ar</span>
-                    )}
-                    {projetoDestaque.premio && (
-                      <span className="selo selo-premio">{projetoDestaque.premio}</span>
-                    )}
-                  </div>
-
-                  <h3>{projetoDestaque.titulo}</h3>
-                  <p className="destaque-objetivo">{projetoDestaque.objetivo}</p>
-
-                  {projetoDestaque.pontosFortes.length > 0 && (
-                    <ul className="destaque-pontos">
-                      {projetoDestaque.pontosFortes.map((ponto) => (
-                        <li key={ponto}>{ponto}</li>
-                      ))}
-                    </ul>
-                  )}
-
-                  <ul className="tech-list">
-                    {projetoDestaque.tecnologia.map((tech) => (
-                      <li key={tech}>{tech}</li>
-                    ))}
-                  </ul>
-
-                  <div className="destaque-acoes">
-                    {projetoDestaque.linkDemo && (
-                      <a href={projetoDestaque.linkDemo} target="_blank" rel="noreferrer" className="btn btn-primary">
-                        <ExternalIcon />
-                        Acessar o app
-                      </a>
-                    )}
-                    <a href={projetoDestaque.linkRepo} target="_blank" rel="noreferrer" className="btn btn-secondary">
-                      <GitHubIcon />
-                      Ver código
-                    </a>
-                  </div>
-                </div>
-              </article>
-            )}
-
-            <div className="projetos-toolbar">
-              <div className="filter-buttons" role="group" aria-label="Filtrar por tecnologia">
-                {todasAsTags.map((tag) => (
-                  <button
-                    key={tag}
-                    type="button"
-                    className={`filter-btn ${filtroAtivo === tag ? 'active' : ''}`}
-                    aria-pressed={filtroAtivo === tag}
-                    onClick={() => setFiltroAtivo(tag)}
-                  >
-                    {tag}
-                  </button>
-                ))}
-              </div>
-              <p className="projetos-count">
-                {projetosFiltrados.length} {projetosFiltrados.length === 1 ? 'projeto' : 'projetos'}
-              </p>
-            </div>
-
-            <div className="projetos-grid">
-              {projetosFiltrados.map((proj, index) => (
-                <article
-                  className="projeto-card"
-                  key={proj.linkRepo || index}
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
+              return (
+                <li
+                  key={chave}
+                  className={`proj ${proj.destaque ? 'proj-destaque' : ''}`}
+                  onMouseEnter={() => setEmFoco(chave)}
+                  onMouseLeave={() => setEmFoco(null)}
                 >
-                  <div className="projeto-media">
+                  <a
+                    className="proj-imagem"
+                    href={proj.linkDemo || proj.linkRepo}
+                    target="_blank"
+                    rel="noreferrer"
+                    tabIndex={-1}
+                    aria-hidden="true"
+                  >
                     <img
-                      src={hoveredIndex === index && proj.gif ? proj.gif : proj.imagem}
-                      alt={proj.titulo}
+                      src={emFoco === chave && proj.gif ? proj.gif : proj.imagem}
+                      alt=""
                       loading="lazy"
                       onError={(e) => {
                         e.target.onerror = null;
                         e.target.src = `https://opengraph.githubassets.com/1/${GITHUB_USERNAME}/${proj.titulo.replace(/\s+/g, '-').toLowerCase()}`;
                       }}
                     />
-                    {proj.premio && <span className="selo selo-premio projeto-media-selo">{proj.premio}</span>}
-                    {proj.gif && <span className="gif-hint">Passe o mouse para ver em ação</span>}
-                  </div>
+                  </a>
 
-                  <div className="projeto-body">
+                  <div className="proj-texto">
+                    {nota && <p className="proj-nota">{nota}</p>}
                     <h3>{proj.titulo}</h3>
-                    <p className="projeto-objetivo">{proj.objetivo}</p>
+                    <p className="proj-tech">{proj.tecnologia.join(', ')}</p>
+                    <p className="proj-objetivo">{proj.objetivo}</p>
 
-                    {proj.desafio && (
-                      <div className="projeto-desafio">
-                        <span>Desafio técnico</span>
-                        <p>{proj.desafio}</p>
-                      </div>
+                    {proj.pontosFortes?.length > 0 && (
+                      <ul className="proj-pontos">
+                        {proj.pontosFortes.map((ponto) => (
+                          <li key={ponto}>{ponto}</li>
+                        ))}
+                      </ul>
                     )}
 
-                    <ul className="tech-list">
-                      {proj.tecnologia.map((tech) => (
-                        <li key={tech}>{tech}</li>
-                      ))}
-                    </ul>
+                    {proj.desafio && (
+                      <p className="proj-desafio">
+                        <strong>Desafio:</strong> {proj.desafio}
+                      </p>
+                    )}
 
-                    <div className="projeto-links">
+                    <p className="proj-links">
                       {proj.linkDemo && (
-                        <a href={proj.linkDemo} target="_blank" rel="noreferrer" className="text-link">
-                          <ExternalIcon />
-                          Demo
-                        </a>
+                        <a href={proj.linkDemo} target="_blank" rel="noreferrer">Ver online</a>
                       )}
-                      <a href={proj.linkRepo} target="_blank" rel="noreferrer" className="text-link">
-                        <GitHubIcon />
-                        Código
-                      </a>
-                      {proj.stars > 0 && <span className="projeto-stars">★ {proj.stars}</span>}
-                    </div>
+                      <a href={proj.linkRepo} target="_blank" rel="noreferrer">Código no GitHub</a>
+                    </p>
                   </div>
-                </article>
-              ))}
-            </div>
-
-            {projetosFiltrados.length === 0 && (
-              <div className="no-projects">
-                <p>Nenhum projeto com a tecnologia "{filtroAtivo}".</p>
-                <button type="button" className="btn btn-secondary" onClick={() => setFiltroAtivo('Todos')}>
-                  Ver todos os projetos
-                </button>
-              </div>
-            )}
-          </>
+                </li>
+              );
+            })}
+          </ol>
         )}
       </div>
     </section>

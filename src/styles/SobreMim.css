@@ -1,7 +1,7 @@
 .sobre-grid {
   display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 64px;
+  grid-template-columns: 200px 1fr;
+  gap: 32px;
 }
 
 .sobre-grid .section-head {

@@ -1,34 +1,30 @@
-import { LinkedInIcon, MailIcon } from './icons';
 import { LINKS } from '../links';
 import '../styles/Contato.css';
 
 const assunto = encodeURIComponent('Contato pelo portfólio');
-const mailto = `mailto:${LINKS.email}?subject=${assunto}`;
 
 function Contato() {
   return (
     <section id="contato" className="section">
-      <div className="container">
-        <div className="contato-card">
-          <div>
-            <span className="section-label">Contato</span>
-            <h2>Vamos conversar</h2>
-            <p>
-              Estou aberto a oportunidades como desenvolvedor front-end ou full-stack. O jeito mais
-              rápido de falar comigo é por e-mail ou pelo LinkedIn.
-            </p>
-          </div>
+      <div className="container contato-grid">
+        <div className="section-head">
+          <h2>Contato</h2>
+        </div>
 
-          <div className="contato-acoes">
-            <a href={mailto} className="btn btn-primary">
-              <MailIcon />
-              {LINKS.email}
-            </a>
-            <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
-              <LinkedInIcon />
-              LinkedIn
-            </a>
-          </div>
+        <div>
+          <p className="contato-texto">
+            Estou aberto a oportunidades como desenvolvedor front-end ou full-stack, remoto ou em
+            São Paulo e Belo Horizonte. O jeito mais rápido de falar comigo é por e-mail.
+          </p>
+          <a href={`mailto:${LINKS.email}?subject=${assunto}`} className="contato-email">
+            {LINKS.email}
+          </a>
+          <p className="contato-outros">
+            Ou pelo{' '}
+            <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            {' '}e pelo{' '}
+            <a href={LINKS.github} target="_blank" rel="noopener noreferrer">GitHub</a>.
+          </p>
         </div>
       </div>
     </section>

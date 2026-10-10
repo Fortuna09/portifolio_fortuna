@@ -1,0 +1,63 @@
+.exp-lista {
+  list-style: none;
+}
+
+.exp-item {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 32px;
+  padding: 32px 0;
+  border-top: 1px solid var(--border);
+}
+
+.exp-item:last-child {
+  padding-bottom: 0;
+}
+
+.exp-periodo {
+  font-size: 0.92rem;
+  color: var(--text-subtle);
+  padding-top: 3px;
+}
+
+.exp-item h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.exp-empresa {
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.exp-contexto {
+  margin-top: 4px;
+  font-size: 0.95rem;
+  color: var(--text-subtle);
+}
+
+.exp-entregas {
+  margin-top: 16px;
+  padding-left: 18px;
+  max-width: 680px;
+}
+
+.exp-entregas li {
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.exp-entregas li + li {
+  margin-top: 8px;
+}
+
+.exp-entregas li::marker {
+  color: var(--text-subtle);
+}
+
+@media (max-width: 860px) {
+  .exp-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}

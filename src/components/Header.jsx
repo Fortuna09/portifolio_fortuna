@@ -4,6 +4,7 @@ import '../styles/TopBar.css';
 
 const navItems = [
   { id: 'sobre-mim', label: 'Sobre' },
+  { id: 'experiencia', label: 'Experiência' },
   { id: 'projetos', label: 'Projetos' },
   { id: 'skills', label: 'Habilidades' },
   { id: 'contato', label: 'Contato' },
@@ -55,7 +56,7 @@ function Header() {
           </ul>
         </nav>
 
-        <a href={LINKS.curriculo} download className="btn btn-secondary top-bar-cv">
+        <a href={LINKS.curriculo} download={LINKS.curriculoNome} className="top-bar-cv">
           Currículo
         </a>
       </div>

@@ -1,6 +1,7 @@
 import Header from './components/Header';
 import MainContent from './components/MainContent';
 import SobreMim from './components/SobreMim';
+import Experiencia from './components/Experiencia';
 import Projetos from './components/Projetos';
 import Skills from './components/Skills';
 import Contato from './components/Contato';
@@ -14,6 +15,7 @@ function App() {
       <main>
         <MainContent />
         <SobreMim />
+        <Experiencia />
         <Projetos />
         <Skills />
         <Contato />

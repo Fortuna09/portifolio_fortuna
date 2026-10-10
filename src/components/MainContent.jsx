@@ -3,9 +3,9 @@ import { LINKS } from '../links';
 import '../styles/MainContent.css';
 
 const fatos = [
-  { titulo: 'Foco', valor: 'Front-end com Angular e React' },
-  { titulo: 'Também atuo com', valor: 'Node.js e C#/.NET' },
-  { titulo: 'Formação', valor: 'Ciência da Computação · UNIFAL' },
+  { titulo: 'Hoje', valor: 'Desenvolvedor Full Stack na Uaisoft' },
+  { titulo: 'Formação', valor: 'Ciência da Computação na UNIFAL, conclusão em 2026' },
+  { titulo: 'Onde', valor: 'Remoto, São Paulo ou Belo Horizonte' },
 ];
 
 function MainContent() {
@@ -13,12 +13,12 @@ function MainContent() {
     <section className="hero" aria-labelledby="hero-titulo">
       <div className="container hero-inner">
         <div className="hero-text">
-          <p className="hero-eyebrow">Desenvolvedor de software</p>
+          <p className="hero-eyebrow">Desenvolvedor Front-End</p>
           <h1 id="hero-titulo">Rafael Fortuna</h1>
           <p className="hero-lead">
-            Desenvolvo interfaces web com Angular, React e TypeScript e levo os projetos até o
-            back-end quando é preciso. Gosto de produto no ar, código legível e de resolver
-            problemas de performance e de dados em tempo real.
+            Construo interfaces com Angular, React e TypeScript para sistemas ERP, plataformas
+            SaaS e aplicações científicas. Também trabalho no back-end com C#, .NET e Node.js, o
+            que me deixa participar das decisões de arquitetura de ponta a ponta.
           </p>
 
           <div className="hero-actions">
@@ -26,7 +26,7 @@ function MainContent() {
               Ver projetos
               <ArrowRightIcon />
             </a>
-            <a href={LINKS.curriculo} download className="btn btn-secondary">
+            <a href={LINKS.curriculo} download={LINKS.curriculoNome} className="btn btn-secondary">
               <DownloadIcon />
               Baixar currículo
             </a>
