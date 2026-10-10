@@ -25,6 +25,82 @@
   color: var(--award);
 }
 
+/* Projeto principal -------------------------------------------------------- */
+
+.proj-principal {
+  padding: 32px;
+  margin-bottom: 72px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.principal-topo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  margin-bottom: 20px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.principal-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.principal-status:hover {
+  color: var(--text);
+}
+
+.status-ponto {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--live);
+  box-shadow: 0 0 0 0 var(--live);
+  animation: pulsar 2.4s ease-out infinite;
+}
+
+@keyframes pulsar {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--live) 45%, transparent); }
+  70%, 100% { box-shadow: 0 0 0 7px transparent; }
+}
+
+.proj-principal .proj-imagem img {
+  aspect-ratio: 16 / 8;
+}
+
+.principal-texto {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: start;
+  margin-top: 28px;
+}
+
+.principal-intro {
+  max-width: 680px;
+}
+
+.proj-principal h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.principal-acoes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 /* Lista -------------------------------------------------------------------- */
 
 .proj-lista {
@@ -69,11 +145,6 @@
 .proj h3 {
   font-size: 1.35rem;
   font-weight: 650;
-}
-
-.proj-destaque h3 {
-  font-size: 1.75rem;
-  font-weight: 700;
 }
 
 .proj-tech {
@@ -135,13 +206,31 @@
 }
 
 @media (max-width: 860px) {
+  .proj-principal {
+    padding: 20px;
+  }
+
+  .proj-principal .proj-imagem img {
+    aspect-ratio: 16 / 10;
+  }
+
+  .principal-texto {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .principal-acoes {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .proj-principal h3 {
+    font-size: 1.5rem;
+  }
+
   .proj {
     grid-template-columns: 1fr;
     gap: 24px;
     padding: 40px 0;
-  }
-
-  .proj-destaque h3 {
-    font-size: 1.5rem;
   }
 }

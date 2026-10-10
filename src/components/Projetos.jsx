@@ -180,8 +180,54 @@ function Projetos() {
     loadProjects();
   }, []);
 
-  // O projeto marcado com "destaque" no portfolio.json vem primeiro
-  const ordenados = [...projetos].sort((a, b) => Number(Boolean(b.destaque)) - Number(Boolean(a.destaque)));
+  // O projeto marcado com "destaque" no portfolio.json ganha um bloco próprio;
+  // depois vêm os premiados e, por fim, os demais
+  const principal = projetos.find((p) => p.destaque);
+  const outros = projetos
+    .filter((p) => p !== principal)
+    .sort((a, b) => Number(Boolean(b.premio)) - Number(Boolean(a.premio)));
+
+  const imagem = (proj, chave) => (
+    <a
+      className="proj-imagem"
+      href={proj.linkDemo || proj.linkRepo}
+      target="_blank"
+      rel="noreferrer"
+      tabIndex={-1}
+      aria-hidden="true"
+    >
+      <img
+        src={emFoco === chave && proj.gif ? proj.gif : proj.imagem}
+        alt=""
+        loading="lazy"
+        onError={(e) => {
+          e.target.onerror = null;
+          e.target.src = `https://opengraph.githubassets.com/1/${GITHUB_USERNAME}/${proj.titulo.replace(/\s+/g, '-').toLowerCase()}`;
+        }}
+      />
+    </a>
+  );
+
+  const detalhes = (proj) => (
+    <>
+      <p className="proj-tech">{proj.tecnologia.join(', ')}</p>
+      <p className="proj-objetivo">{proj.objetivo}</p>
+
+      {proj.pontosFortes?.length > 0 && (
+        <ul className="proj-pontos">
+          {proj.pontosFortes.map((ponto) => (
+            <li key={ponto}>{ponto}</li>
+          ))}
+        </ul>
+      )}
+
+      {proj.desafio && (
+        <p className="proj-desafio">
+          <strong>Desafio:</strong> {proj.desafio}
+        </p>
+      )}
+    </>
+  );
 
   return (
     <section id="projetos" className="section">
@@ -204,70 +250,74 @@ function Projetos() {
           </p>
         )}
 
+        {!loading && principal && (
+          <article
+            className="proj-principal"
+            onMouseEnter={() => setEmFoco('principal')}
+            onMouseLeave={() => setEmFoco(null)}
+          >
+            <div className="principal-topo">
+              <span>Projeto principal</span>
+              {principal.linkDemo && (
+                <a className="principal-status" href={principal.linkDemo} target="_blank" rel="noreferrer">
+                  <span className="status-ponto" aria-hidden="true" />
+                  No ar em {principal.linkDemo.replace(/^https?:\/\//, '')}
+                </a>
+              )}
+            </div>
+
+            {imagem(principal, 'principal')}
+
+            <div className="principal-texto">
+              <div className="principal-intro">
+                <h3>{principal.titulo}</h3>
+                {detalhes(principal)}
+              </div>
+
+              <div className="principal-acoes">
+                {principal.linkDemo && (
+                  <a className="btn btn-primary" href={principal.linkDemo} target="_blank" rel="noreferrer">
+                    Abrir o app
+                  </a>
+                )}
+                <a className="btn btn-secondary" href={principal.linkRepo} target="_blank" rel="noreferrer">
+                  Código no GitHub
+                </a>
+              </div>
+            </div>
+          </article>
+        )}
+
         {!loading && (
           <ol className="proj-lista">
-            {ordenados.map((proj) => {
-              const chave = proj.linkRepo || proj.titulo;
-              const nota = [proj.destaque && proj.linkDemo ? 'Em produção' : null, proj.premio]
-                .filter(Boolean)
-                .join(' · ');
+              {outros.map((proj) => {
+                const chave = proj.linkRepo || proj.titulo;
 
-              return (
-                <li
-                  key={chave}
-                  className={`proj ${proj.destaque ? 'proj-destaque' : ''}`}
-                  onMouseEnter={() => setEmFoco(chave)}
-                  onMouseLeave={() => setEmFoco(null)}
-                >
-                  <a
-                    className="proj-imagem"
-                    href={proj.linkDemo || proj.linkRepo}
-                    target="_blank"
-                    rel="noreferrer"
-                    tabIndex={-1}
-                    aria-hidden="true"
+                return (
+                  <li
+                    key={chave}
+                    id={proj.linkRepo?.split('/').pop()}
+                    className="proj"
+                    onMouseEnter={() => setEmFoco(chave)}
+                    onMouseLeave={() => setEmFoco(null)}
                   >
-                    <img
-                      src={emFoco === chave && proj.gif ? proj.gif : proj.imagem}
-                      alt=""
-                      loading="lazy"
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = `https://opengraph.githubassets.com/1/${GITHUB_USERNAME}/${proj.titulo.replace(/\s+/g, '-').toLowerCase()}`;
-                      }}
-                    />
-                  </a>
+                    {imagem(proj, chave)}
 
-                  <div className="proj-texto">
-                    {nota && <p className="proj-nota">{nota}</p>}
-                    <h3>{proj.titulo}</h3>
-                    <p className="proj-tech">{proj.tecnologia.join(', ')}</p>
-                    <p className="proj-objetivo">{proj.objetivo}</p>
+                    <div className="proj-texto">
+                      {proj.premio && <p className="proj-nota">{proj.premio}</p>}
+                      <h3>{proj.titulo}</h3>
+                      {detalhes(proj)}
 
-                    {proj.pontosFortes?.length > 0 && (
-                      <ul className="proj-pontos">
-                        {proj.pontosFortes.map((ponto) => (
-                          <li key={ponto}>{ponto}</li>
-                        ))}
-                      </ul>
-                    )}
-
-                    {proj.desafio && (
-                      <p className="proj-desafio">
-                        <strong>Desafio:</strong> {proj.desafio}
+                      <p className="proj-links">
+                        {proj.linkDemo && (
+                          <a href={proj.linkDemo} target="_blank" rel="noreferrer">Ver online</a>
+                        )}
+                        <a href={proj.linkRepo} target="_blank" rel="noreferrer">Código no GitHub</a>
                       </p>
-                    )}
-
-                    <p className="proj-links">
-                      {proj.linkDemo && (
-                        <a href={proj.linkDemo} target="_blank" rel="noreferrer">Ver online</a>
-                      )}
-                      <a href={proj.linkRepo} target="_blank" rel="noreferrer">Código no GitHub</a>
-                    </p>
-                  </div>
-                </li>
-              );
-            })}
+                    </div>
+                  </li>
+                );
+              })}
           </ol>
         )}
       </div>
