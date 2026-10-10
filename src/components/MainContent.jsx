@@ -26,7 +26,7 @@ function MainContent() {
               Ver projetos
               <ArrowRightIcon />
             </a>
-            <a href={LINKS.curriculo} download={LINKS.curriculoNome} className="btn btn-secondary">
+            <a href={LINKS.curriculo} download={LINKS.curriculoNome} className="btn btn-secondary" data-umami-event="Baixou currículo" data-umami-event-local="início">
               <DownloadIcon />
               Baixar currículo
             </a>
@@ -34,17 +34,17 @@ function MainContent() {
 
           <ul className="hero-links">
             <li>
-              <a href={LINKS.github} target="_blank" rel="noopener noreferrer" className="text-link">
+              <a href={LINKS.github} target="_blank" rel="noopener noreferrer" className="text-link" data-umami-event="Abriu GitHub" data-umami-event-local="início">
                 <GitHubIcon /> GitHub
               </a>
             </li>
             <li>
-              <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="text-link">
+              <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="text-link" data-umami-event="Abriu LinkedIn" data-umami-event-local="início">
                 <LinkedInIcon /> LinkedIn
               </a>
             </li>
             <li>
-              <a href={`mailto:${LINKS.email}`} className="text-link">
+              <a href={`mailto:${LINKS.email}`} className="text-link" data-umami-event="Clicou no e-mail" data-umami-event-local="início">
                 <MailIcon /> {LINKS.email}
               </a>
             </li>

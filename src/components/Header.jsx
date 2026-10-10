@@ -57,7 +57,7 @@ function Header() {
           </ul>
         </nav>
 
-        <a href={LINKS.curriculo} download={LINKS.curriculoNome} className="top-bar-cv">
+        <a href={LINKS.curriculo} download={LINKS.curriculoNome} className="top-bar-cv" data-umami-event="Baixou currículo" data-umami-event-local="topo">
           Currículo
         </a>
       </div>

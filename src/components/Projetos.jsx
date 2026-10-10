@@ -195,6 +195,9 @@ function Projetos() {
       rel="noreferrer"
       tabIndex={-1}
       aria-hidden="true"
+      data-umami-event="Abriu projeto"
+      data-umami-event-projeto={proj.titulo}
+      data-umami-event-destino={proj.linkDemo ? 'online (imagem)' : 'código (imagem)'}
     >
       <img
         src={emFoco === chave && proj.gif ? proj.gif : proj.imagem}
@@ -259,7 +262,7 @@ function Projetos() {
             <div className="principal-topo">
               <span>Projeto principal</span>
               {principal.linkDemo && (
-                <a className="principal-status" href={principal.linkDemo} target="_blank" rel="noreferrer">
+                <a className="principal-status" href={principal.linkDemo} target="_blank" rel="noreferrer" data-umami-event="Abriu projeto" data-umami-event-projeto={principal.titulo} data-umami-event-destino="online">
                   <span className="status-ponto" aria-hidden="true" />
                   No ar em {principal.linkDemo.replace(/^https?:\/\//, '')}
                 </a>
@@ -276,11 +279,11 @@ function Projetos() {
 
               <div className="principal-acoes">
                 {principal.linkDemo && (
-                  <a className="btn btn-primary" href={principal.linkDemo} target="_blank" rel="noreferrer">
+                  <a className="btn btn-primary" href={principal.linkDemo} target="_blank" rel="noreferrer" data-umami-event="Abriu projeto" data-umami-event-projeto={principal.titulo} data-umami-event-destino="online">
                     Abrir o app
                   </a>
                 )}
-                <a className="btn btn-secondary" href={principal.linkRepo} target="_blank" rel="noreferrer">
+                <a className="btn btn-secondary" href={principal.linkRepo} target="_blank" rel="noreferrer" data-umami-event="Abriu projeto" data-umami-event-projeto={principal.titulo} data-umami-event-destino="código">
                   Código no GitHub
                 </a>
               </div>
@@ -310,9 +313,9 @@ function Projetos() {
 
                       <p className="proj-links">
                         {proj.linkDemo && (
-                          <a href={proj.linkDemo} target="_blank" rel="noreferrer">Ver online</a>
+                          <a href={proj.linkDemo} target="_blank" rel="noreferrer" data-umami-event="Abriu projeto" data-umami-event-projeto={proj.titulo} data-umami-event-destino="online">Ver online</a>
                         )}
-                        <a href={proj.linkRepo} target="_blank" rel="noreferrer">Código no GitHub</a>
+                        <a href={proj.linkRepo} target="_blank" rel="noreferrer" data-umami-event="Abriu projeto" data-umami-event-projeto={proj.titulo} data-umami-event-destino="código">Código no GitHub</a>
                       </p>
                     </div>
                   </li>
