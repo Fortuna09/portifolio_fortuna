@@ -90,6 +90,7 @@ async function repoToProject(repo) {
   // Busca o JSON. Se der 404, customData será null.
   const customData = await fetchPortfolioJson(repo.name);
   const repoNameLower = repo.name.toLowerCase();
+  const branch = repo.default_branch || 'master';
   const timestamp = new Date().getTime();
 
   const githubTechs = repo.topics
@@ -107,7 +108,7 @@ async function repoToProject(repo) {
       finalImage = customData.imagem;
     } else {
       const cleanPath = customData.imagem.startsWith('/') ? customData.imagem.slice(1) : customData.imagem;
-      finalImage = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${repoNameLower}/master/${cleanPath}?t=${timestamp}`;
+      finalImage = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${repoNameLower}/${branch}/${cleanPath}?t=${timestamp}`;
     }
   }
 
@@ -119,7 +120,7 @@ async function repoToProject(repo) {
     } else {
       const cleanGifPath = customData.gif.startsWith('/') ? customData.gif.slice(1) : customData.gif;
       // Monta a URL RAW para o GIF
-      finalGif = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${repoNameLower}/master/${cleanGifPath}?t=${timestamp}`;
+      finalGif = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${repoNameLower}/${branch}/${cleanGifPath}?t=${timestamp}`;
     }
   }
 
@@ -135,6 +136,9 @@ async function repoToProject(repo) {
     tags: customData?.tags || githubTechs || [repo.language || "Code"],
     stars: repo.stargazers_count,
     updatedAt: repo.updated_at,
+    destaque: Boolean(customData?.destaque),
+    pontosFortes: customData?.pontosFortes || [],
+    premio: customData?.premio || null,
   };
 }
 
@@ -149,7 +153,11 @@ function Projetos() {
   const [filtroAtivo, setFiltroAtivo] = useState('Todos');
   const [projetosFiltrados, setProjetosFiltrados] = useState([]);
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [hoverDestaque, setHoverDestaque] = useState(false);
   const [todasAsTags, setTodasAsTags] = useState(['Todos']);
+
+  // O projeto em destaque sai da grade (efeitos abaixo) para não aparecer duas vezes
+  const projetoDestaque = projetos.find(p => p.destaque);
 
   // Busca os projetos do GitHub ao montar o componente
   useEffect(() => {
@@ -184,17 +192,19 @@ function Projetos() {
 
   // Atualiza as tags disponíveis quando os projetos mudam
   useEffect(() => {
-    const tags = ['Todos', ...new Set(projetos.flatMap(p => p.tags || []))];
+    const grade = projetos.filter(p => !p.destaque);
+    const tags = ['Todos', ...new Set(grade.flatMap(p => p.tags || []))];
     setTodasAsTags(tags);
-    setProjetosFiltrados(projetos);
+    setProjetosFiltrados(grade);
   }, [projetos]);
 
   // Filtra projetos quando o filtro ativo muda
   useEffect(() => {
+    const grade = projetos.filter(p => !p.destaque);
     if (filtroAtivo === 'Todos') {
-      setProjetosFiltrados(projetos);
+      setProjetosFiltrados(grade);
     } else {
-      const filtrados = projetos.filter(projeto =>
+      const filtrados = grade.filter(projeto =>
         projeto.tags?.includes(filtroAtivo)
       );
       setProjetosFiltrados(filtrados);
@@ -221,6 +231,68 @@ function Projetos() {
 
       {!loading && (
         <>
+          {projetoDestaque && (
+            <article
+              className="destaque-card"
+              onMouseEnter={() => setHoverDestaque(true)}
+              onMouseLeave={() => setHoverDestaque(false)}
+            >
+              <div className="destaque-media">
+                <img
+                  src={hoverDestaque && projetoDestaque.gif ? projetoDestaque.gif : projetoDestaque.imagem}
+                  alt={projetoDestaque.titulo}
+                  loading="lazy"
+                />
+              </div>
+
+              <div className="destaque-info">
+                <div className="destaque-selos">
+                  <span className="destaque-rotulo">Projeto em destaque</span>
+                  {projetoDestaque.linkDemo && (
+                    <span className="selo-no-ar"><span className="selo-pulso" />No ar</span>
+                  )}
+                  {projetoDestaque.premio && (
+                    <span className="selo-premio">🏆 {projetoDestaque.premio}</span>
+                  )}
+                </div>
+
+                <h3>{projetoDestaque.titulo}</h3>
+                <p className="destaque-objetivo">{projetoDestaque.objetivo}</p>
+
+                {projetoDestaque.pontosFortes.length > 0 && (
+                  <ul className="destaque-pontos">
+                    {projetoDestaque.pontosFortes.map((ponto) => (
+                      <li key={ponto}>{ponto}</li>
+                    ))}
+                  </ul>
+                )}
+
+                <div className="tecnologias-container destaque-techs">
+                  {projetoDestaque.tecnologia.map((tech) => (
+                    <span key={tech} className="tech-tag">{tech}</span>
+                  ))}
+                </div>
+
+                <div className="projeto-botoes destaque-botoes">
+                  {projetoDestaque.linkDemo && (
+                    <a href={projetoDestaque.linkDemo} target="_blank" rel="noreferrer" className="botao-demo">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                      </svg>
+                      Acessar o app
+                    </a>
+                  )}
+                  <a href={projetoDestaque.linkRepo} target="_blank" rel="noreferrer" className="botao-repo">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    Código
+                  </a>
+                </div>
+              </div>
+            </article>
+          )}
+
           {/* Filtros */}
           <div className="filter-buttons">
             {todasAsTags.map(tag => (
@@ -264,6 +336,9 @@ function Projetos() {
                     <div className="gif-indicator">
                       <span>▶</span> Coloque o mouse para ver o GIF
                     </div>
+                  )}
+                  {proj.premio && (
+                    <div className="premio-badge">🏆 {proj.premio}</div>
                   )}
                   {proj.stars > 0 && (
                     <div className="stars-badge">
